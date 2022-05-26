@@ -1,4 +1,4 @@
-# *Vithurshan's Summer Project with Nanolabsatellite Research Laboratory @ York *
+# ***Vithurshan's Summer Project with Nanolabsatellite Research Laboratory @ York***
 ## *Event Log : Ground System Server for Optical Data Processing*
 
 ### Major Updates on Vithurshan's Database Architecture for SSA
