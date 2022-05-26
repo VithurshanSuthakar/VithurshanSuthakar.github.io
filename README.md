@@ -8,7 +8,7 @@
     -  Each group and file were tagged with their respective attributes.
 
 
-## Daily Research/Progres for Database Architecture for SSA
+## Daily Research Progress towards constructing Database Architecture for SSA
 
 ***25/05/2022*** 
  - Researched into SQL and NoSQL databases.
