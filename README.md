@@ -1,2 +1,4 @@
-# VithurshanSuthakar.github.io
-Updates on Vithurshan's Current Projects
+# *VithurshanSuthakar*
+Updates on Vithurshan's Database Architecture for SSA
+
+Database Architecture for SSA
