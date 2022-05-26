@@ -1,6 +1,7 @@
-# *Nanolabsatellite Research Laboratory @ York University Event Log : Ground System Server for Optical Data Processing*
+# *Nanolabsatellite Research Laboratory @ York University *
+## *Event Log : Ground System Server for Optical Data Processing*
 
-## Major Updates on Vithurshan's Database Architecture for SSA
+### Major Updates on Vithurshan's Database Architecture for SSA
 
 ***20/05/2022*** 
 - Successfully delivered Small Scale HDF5 test file for four Objects of four different colors.
