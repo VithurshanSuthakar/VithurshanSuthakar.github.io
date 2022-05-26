@@ -13,4 +13,4 @@
 
 ***25/05/2022*** 
  - Researched into SQL and NoSQL databases.
- - Stress tested the Small Scale HDF5 test code with new images from [Stanford Dogs Dataset](http://vision.stanford.edu/aditya86/ImageNetDogs/?ref=hackernoon.com) which contains about 20,580 images of dogs from 120 dog breeds.
+ - Stress tested the Small Scale HDF5 test code with new images from [Stanford Dogs Dataset](http://vision.stanford.edu/aditya86/ImageNetDogs/?ref=hackernoon.com) which contains about 20,580 images from 120 dog breeds.
