@@ -1,4 +1,4 @@
-# *VithurshanSuthakar*
+# *Nanolabsatellite Research Laboratory @ York University Event Log for Ground System Server for Optical Data Processing*
 
 ## Major Updates on Vithurshan's Database Architecture for SSA
 
