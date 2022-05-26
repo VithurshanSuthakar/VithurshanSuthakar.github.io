@@ -1,4 +1,4 @@
-# *Nanolabsatellite Research Laboratory @ York University Event Log for Ground System Server for Optical Data Processing*
+# *Nanolabsatellite Research Laboratory @ York University Event Log : Ground System Server for Optical Data Processing*
 
 ## Major Updates on Vithurshan's Database Architecture for SSA
 
