@@ -12,10 +12,12 @@
 ### Daily Research/Progress 
 
 ***25/05/2022*** 
+
     - Researched SQL and NoSQL databases. Identified that SQL database will be best suited for the needs of the lab. As data would be stored in a structured manner. Also has complex queries and grouping of data. 
     - Stress tested the Small Scale HDF5 test code with new images from [Stanford Dogs Dataset](http://vision.stanford.edu/aditya86/ImageNetDogs/?ref=hackernoon.com) which contains about 20,580 images from 120 dog breeds.
     - Created this site to log processes on the project
 
 ***26/05/2022*** 
+
     - Read into OpenCV, especially the image processing functions (imgproc module)
     - Tried to attach attributes from the names of the files in the Standford dogs dataset to their respective dataset while categorizing the different breeds into their respective group.
