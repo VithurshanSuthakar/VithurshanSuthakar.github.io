@@ -1,7 +1,9 @@
 # ***Vithurshan's Summer Project with Nanosatellite Research Laboratory @ York***
 ## *Event Logs: Ground System Server for Optical Data Processing*
 
-### Major Updates on Vithurshan's Database Architecture for SSA
+## Updates on Vithurshan's Database Architecture for SSA
+
+###  Major Milestones
 
 ***20/05/2022*** 
 - Successfully delivered a Small Scale HDF5 test file with images belonging to  [four different Objects of four different colours](https://github.com/VithurshanSuthakar/VithurshanSuthakar.github.io/tree/main/4Colobj).
@@ -19,3 +21,9 @@
 ***26/05/2022*** 
 - Read into OpenCV, especially the image processing functions (imgproc module)
 - Tried to attach attributes from the names of the files in the Standford dogs dataset to their respective dataset while categorizing the different breeds into their respective group.
+
+***27/06/2022***
+- met with Andrea, to understand TNKTNK's ontology 
+- Weekly meeting with Sid, to clarify and establish structure for the project.
+
+
