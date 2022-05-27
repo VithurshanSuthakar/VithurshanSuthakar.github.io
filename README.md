@@ -3,6 +3,7 @@
 
 ## Updates on Vithurshan's Database Architecture for SSA
 
+
 ###  Major Milestones
 
 ***20/05/2022*** 
@@ -27,3 +28,4 @@
 - Weekly meeting with Sid, to clarify and establish structure for the project.
 
 
+## For futher clarification contact : vithurs@my.yorku.ca
