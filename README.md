@@ -23,7 +23,7 @@
 - Read into OpenCV, especially the image processing functions (imgproc module)
 - Tried to attach attributes from the names of the files in the Standford dogs dataset to their respective dataset while categorizing the different breeds into their respective group.
 
-***27/06/2022***
+***27/05/2022***
 - met with Andrea, to understand TNKTNK's ontology 
 - Weekly meeting with Sid, to clarify and establish structure for the project.
 
