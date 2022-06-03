@@ -24,11 +24,11 @@
 - Tried to attach attributes from the names of the files in the Standford dogs dataset to their respective dataset while categorizing the different breeds into their respective group.
 
 ***27/05/2022***
-- met with Andrea, to understand TNKTNK's ontology 
+- Met with Andrea, to understand TNKTNK's ontology 
 - Weekly meeting with Sid, to clarify and establish structure for the project.
 
 ***31/05/2022***
- - experimented with Python GUI Development with PySimpleGUI
+ - Experimented with Python GUI Development with PySimpleGUI
 
 ***02/05/2022***
  - Used EasyGUI to read in the Image Directory Path for TKTNK
