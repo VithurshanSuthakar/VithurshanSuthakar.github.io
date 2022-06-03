@@ -12,7 +12,7 @@
 - Each group and file were tagged with their respective attributes.
 
 
-### Daily Research/Progress 
+### Research Progress 
 
 ***25/05/2022*** 
 - Researched SQL and NoSQL databases. Identified that SQL database will be best suited for the needs of the lab. As data would be stored in a structured manner. Also has complex queries and grouping of data. 
@@ -27,5 +27,10 @@
 - met with Andrea, to understand TNKTNK's ontology 
 - Weekly meeting with Sid, to clarify and establish structure for the project.
 
+***31/05/2022***
+ - experimented with Python GUI Development with PySimpleGUI
+
+***02/05/2022***
+ - Used EasyGUI to read in the Image Directory Path for TKTNK
 
 ## For futher clarification contact : vithurs@my.yorku.ca
