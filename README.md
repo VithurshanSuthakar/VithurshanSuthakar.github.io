@@ -30,7 +30,10 @@
 ***31/05/2022***
  - Experimented with Python GUI Development with PySimpleGUI
 
-***02/05/2022***
+***02/06/2022***
  - Used EasyGUI to read in the Image Directory Path for TKTNK
+
+***03/06/2022***
+ - Met with Diane, and discussed how her algorithm should be integrated into the GSS.
 
 ## For futher clarification contact : vithurs@my.yorku.ca
