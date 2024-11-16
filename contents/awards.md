@@ -3,12 +3,6 @@
 *Awarded to design, fabricate, and test an integrated microsystem.*  
 
 
-
-### 06/2023  - CUPE Masters Bursary Fund 
-**CUPE 3903**
-
-
-
 ### 03/2023  - Mitacs Accelerate Internship 
 *Awarded to support research aimed at enhancing the algorithms for identifying Resident Space Objects as part of the SPACEDUST project in collaboration with Magellan Aerospace and C-CORE.*  
 
