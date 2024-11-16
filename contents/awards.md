@@ -1,7 +1,6 @@
 ### NSERC CREATE - Microsystems Technologies & Application (MTA) 09/2023  
 **Natural Sciences and Engineering Research Council of Canada**  
 *Awarded to design, fabricate, and test an integrated microsystem.*  
-**09/2023**
 
 ### CUPE Masters Bursary Fund 06/2023  
 **CUPE 3903**  
@@ -12,7 +11,7 @@
 ### NSERC CREATE - Microsystems Technologies & Application (MTA) 09/2022  
 **Natural Sciences and Engineering Research Council of Canada**  
 *Awarded for research on optimal parameters for photolithography mask production with RP325+LXT Laser Plotter and Hope/Carnfeldt EG 750 PCB processor.*  
-**09/2022**
+
 
 ### Research at York 05/2022  
 **York University**  
