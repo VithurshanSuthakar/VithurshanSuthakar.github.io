@@ -27,6 +27,6 @@ Vithurshan is currently pursuing a **PhD Degree in Earth and Space Science** at 
 *(Transferred to York University for Space Science)*  
 
 #### Research Interests
-Space Situational Awareness (SSA), Resident Space Objects (RSOs), Detection Algorithm, Commercial Off-the-Shelf (COTS) Sensors, Stratospheric Ballooning, Star Tracker, Sensor Design and Calibration
+Space Situational Awareness (SSA), Resident Space Objects (RSOs), Stratospheric Ballooning, Star Tracker, Sensor Design and Calibration
 
 
