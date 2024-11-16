@@ -11,13 +11,13 @@ He is currently pursuing a **PhD Degree in Earth and Space Science** at the **La
 
 #### Education
 
-### Ph.D. in Earth and Space Science  
+##### Ph.D. in Earth and Space Science  
 **York University**  
 *05/2024 – present*  
 
 ---
 
-### Master of Science Earth and Space Science  
+##### Master of Science Earth and Space Science  
 **York University**  
 *01/2023 – 12/2024*  
 - **Supervisor**: Dr. Regina Lee  
@@ -26,19 +26,18 @@ He is currently pursuing a **PhD Degree in Earth and Space Science** at the **La
 
 ---
 
-### Bachelor of Science Specialized Honours Space Science  
+##### Bachelor of Science Specialized Honours Space Science  
 **York University**  
 *2018 – 12/2022*  
 
 ---
 
-### Bachelor of Science Honours Computer Science  
+##### Bachelor of Science Honours Computer Science  
 **Carleton University**  
 *2017 – 2018*  
 *(Transferred to York University for Space Science)*  
 
 #### Research Interests
-Space Situational Awareness (SSA)
-Resident Space Objects (RSOs), Detection Algorithm, Commercial Off-the-Shelf (COTS) Sensors, Stratospheric Ballooning, Star Tracker, Sensor Design and Calibration
+Space Situational Awareness (SSA), Resident Space Objects (RSOs), Detection Algorithm, Commercial Off-the-Shelf (COTS) Sensors, Stratospheric Ballooning, Star Tracker, Sensor Design and Calibration
 
 
