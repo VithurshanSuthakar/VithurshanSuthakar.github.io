@@ -1,6 +1,6 @@
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?logo=linkedin&style=flat-square)](https://www.linkedin.com/in/vithurshansuthakar/)
 
-[![senli1073](https://img.shields.io/badge/senli1073-github-blue?logo=github)](https://github.com/senli1073)
 
 He is currently pursuing a **PhD Degree in Earth and Space Science** at the **Lassonde School of Engineering, York University, Canada**.
 
