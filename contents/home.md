@@ -8,26 +8,22 @@ Vithurshan is currently pursuing a **PhD Degree in Earth and Space Science** at 
 #### Education
 
 ##### Ph.D. in Earth and Space Science  
-**York University**  
-*05/2024 – present*  
+**York University**  *05/2024 – present*  
 - **Supervisor**: Dr. Regina Lee  
 - **Committee**: Dr. Franz Newland  
 
 ##### Master of Science Earth and Space Science  
-**York University**  
-*01/2023 – 12/2024*  
+**York University**  *01/2023 – 12/2024*  
 - **Supervisor**: Dr. Regina Lee  
 - **Committee**: Dr. Franz Newland  
 - **Research Topic**: *Image Processing for Stratospheric-Based Space Situational Awareness*  
 
 
 ##### Bachelor of Science Specialized Honours Space Science  
-**York University**  
-*2018 – 12/2022*  
+**York University**  *2018 – 12/2022*  
 
 ##### Bachelor of Science Honours Computer Science  
-**Carleton University**  
-*2017 – 2018*  
+**Carleton University**  *2017 – 2018*  
 *(Transferred to York University for Space Science)*  
 
 #### Research Interests
