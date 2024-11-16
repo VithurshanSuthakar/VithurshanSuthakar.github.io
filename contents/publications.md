@@ -15,4 +15,4 @@
 
 - **V. Suthakar**, A. A. Sanvido, M. Vellani, E. Brown, and R. S. K. Lee. ORBIT: Open-source Research for Better Identification and Tracking of Space Objects. **SpaceOps 2025 (submitted)**.
 
-- R. Qashoa*, P. Kunalakantha, G. Chianelli, **V. Suthakar**, and R. S. K. Lee. Lessons Learned From Technology Demonstration Of Space Situational Awareness Satellite. *Small Satellite Conference 2024*. **[[Paper]](https://digitalcommons.usu.edu/smallsat/2024/all2024/144/)**
+- R. Qashoa*, P. Kunalakantha, G. Chianelli, **V. Suthakar**, and R. S. K. Lee. Lessons Learned From Technology Demonstration Of Space Situational Awareness Satellite. **Small Satellite Conference 2024**. **[[Paper]](https://digitalcommons.usu.edu/smallsat/2024/all2024/144/)**
