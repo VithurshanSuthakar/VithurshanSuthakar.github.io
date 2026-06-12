@@ -396,6 +396,19 @@
     letter-spacing:.04em; padding:12px 8px 6px; line-height:1.5;
   }
 
+  .gallery{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;
+    margin:32px 0;
+  }
+  .gallery .figure{ margin:0; display:flex; flex-direction:column; }
+  .gallery .figure img{ aspect-ratio:4/3; object-fit:cover; }
+  @media (max-width:760px){
+    .gallery{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width:520px){
+    .gallery{ grid-template-columns:1fr; }
+  }
+
   /* press */
   .press-list{ list-style:none; }
   .press-item{
@@ -556,7 +569,7 @@
             Space Situational Awareness</em>, toward space-based and high-altitude platforms for
             tracking debris and active satellites in increasingly congested orbital regimes. I've
             contributed to the <strong>RSONAR</strong> stratospheric balloon program and the
-            <strong>SOBER</strong> mission, selected through ESA's REXUS/BEXUS programme — from
+            <strong>SSA Stratospheric</strong> mission, selected through ESA's REXUS/BEXUS programme — from
             payload design and sensor integration through to the detection algorithms that process
             the resulting imagery.
           </p>
@@ -567,7 +580,7 @@
         </div>
         <div>
           <div class="portrait">
-            <img src="assets/photo.png" alt="Portrait of Vithurshan Suthakar">
+            <img src="photo.png" alt="Portrait of Vithurshan Suthakar">
           </div>
           <div class="portrait-cap">Toronto, Ontario</div>
         </div>
@@ -1027,6 +1040,29 @@
         written for engraving onto a near-space payload as part of one of Professor Lee's nanosatellite missions.
       </figcaption>
     </figure>
+
+    <div class="gallery">
+      <figure class="figure">
+        <img src="assets/feedback-session.jpg" alt="Leading a feedback session with attendees after the theatre-level Satellites and You presentation">
+        <figcaption>Leading the post-presentation feedback session at the Ontario Science Centre, 2023.</figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="assets/satellites-and-us.jpg" alt="Audience members holding satellite models on stage during the Satellites and Us presentation, with an orbit visualization projected behind">
+        <figcaption>"Satellites &amp; Us" presentation, Ontario Science Centre — engaging the audience with satellite models and orbit visualizations.</figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="assets/timmins-campers.webp" alt="Presenting the NIMBUS-3 stratospheric balloon payload and debris-tracking experiment to summer campers at the Canadian Space Agency base in Timmins">
+        <figcaption>Explaining the NIMBUS-3 debris-tracking payload to Science Timmins summer campers at the CSA base, Timmins.</figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="assets/mcintosh-mural.jpg" alt="Installing an interactive constellation mural with embedded circuit boards for the McIntosh Gallery exhibit at Western University">
+        <figcaption>Installing the interactive constellation mural for "The Life Cycle of Celestial Objects," McIntosh Gallery, Western University.</figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="assets/science-centre-revisit.jpg" alt="Returning to the Ontario Science Centre to display the flown payload alongside the engraved message plate for visiting children">
+        <figcaption>Revisiting the Ontario Science Centre to display the flown payload and engraved message plate.</figcaption>
+      </figure>
+    </div>
 
     <div class="feature-block">
       <div>
