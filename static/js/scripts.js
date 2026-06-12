@@ -2,7 +2,7 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
-const section_names = ['home', 'teaching', 'outreach', 'publications', 'awards']
+const section_names = ['home', 'publications', 'awards']
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -54,30 +54,12 @@ window.addEventListener('DOMContentLoaded', event => {
             .then(response => response.text())
             .then(markdown => {
                 const html = marked.parse(markdown);
-                const el = document.getElementById(name + '-md');
-                if (el) { el.innerHTML = html; }
+                document.getElementById(name + '-md').innerHTML = html;
             }).then(() => {
                 // MathJax
-                if (window.MathJax) { MathJax.typeset(); }
+                MathJax.typeset();
             })
             .catch(error => console.log(error));
     })
 
-
-    // Scroll-reveal for section bodies
-    const revealEls = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-        revealEls.forEach(el => observer.observe(el));
-    } else {
-        revealEls.forEach(el => el.classList.add('is-visible'));
-    }
-
-});
+}); 

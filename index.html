@@ -1,248 +1,1177 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Vithurshan Suthakar — PhD researcher in Earth and Space Science at York University. Optical detection and image processing for Space Situational Awareness." />
-    <meta name="author" content="Vithurshan Suthakar" />
-    <title id="title">Vithurshan Suthakar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vithurshan Suthakar</title>
+<meta name="description" content="Vithurshan Suthakar, PhD researcher in Earth and Space Science at York University. Optical detection and image processing for Space Situational Awareness.">
 
-    <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<style>
+  :root{
+    --paper:     #faf6ee;
+    --paper-2:   #f1ead9;
+    --ink:       #211d17;
+    --ink-soft:  #56524a;
+    --ink-faint: #948e7e;
+    --rule:      #e1d8c4;
+    --rule-2:    #cdc1a6;
 
-    <!-- Google fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    --navy:      #1f2c44;
+    --navy-2:    #2d3f5e;
+    --rust:      #c1572f;
+    --rust-2:    #a8431f;
+    --gold:      #d6a341;
+    --cream:     #f3ecdc;
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/main.css" rel="stylesheet" />
+    --accent:    #a8431f;
+    --accent-2:  #1f2c44;
 
-    <!-- Bootstrap core JS-->
-    <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
+    --serif: 'Source Serif 4', Georgia, serif;
+    --display: 'Fraunces', Georgia, serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
 
-    <!-- For Compatability -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    --maxw: 980px;
+  }
 
-    <!-- Markdown -->
-    <script type="text/javascript" src="static/js/marked.min.js"></script>
+  *{ margin:0; padding:0; box-sizing:border-box; }
 
-    <!-- Mathematics -->
-    <script>
-        MathJax = {
-            tex: {
-                packages: {},
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: false,
-                processEnvironments: true,
-                processRefs: true,
-                digits: /^(?:[0-9]+(?:\{,\}[0-9]{3})*(?:\.[0-9]*)?|\.[0-9]+)/,
-                tags: 'all',
-                tagSide: 'right',
-                tagIndent: '0.8em',
-                useLabelIds: true,
-                maxMacros: 10000,
-                maxBuffer: 5 * 1024,
-                formatError: (jax, err) => jax.formatError(err)
-            }
-        };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  body{
+    background-color:var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(33,29,23,0.025) 1px, transparent 0);
+    background-size:22px 22px;
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
 
-    <!-- Core JS-->
-    <script type="text/javascript" src="static/js/scripts.js"></script>
-    <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
+  ::selection{ background:#d9cdb0; }
 
+  a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:hover{ color:var(--accent-2); }
+
+  :focus-visible{ outline:1px solid var(--accent); outline-offset:2px; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  img{ max-width:100%; display:block; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(165deg, var(--navy) 0%, var(--navy-2) 55%, #243652 100%);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    /* scattered stars */
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 18%, rgba(255,255,255,.55), transparent),
+      radial-gradient(1px 1px at 22% 64%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1.5px 1.5px at 38% 12%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 52% 78%, rgba(255,255,255,.35), transparent),
+      radial-gradient(1.5px 1.5px at 68% 30%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1.5px 1.5px at 92% 22%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 14% 88%, rgba(255,255,255,.35), transparent),
+      radial-gradient(1.5px 1.5px at 60% 92%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1px 1px at 88% 84%, rgba(255,255,255,.3), transparent);
+    pointer-events:none;
+  }
+
+  .hero-top{
+    display:flex; justify-content:space-between; align-items:center; gap:24px;
+    flex-wrap:wrap;
+    padding:24px 0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    position:relative; z-index:2;
+  }
+  .hero-mark{
+    font-family:var(--mono); font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:rgba(243,236,220,.65);
+  }
+  .hero-top nav{
+    display:flex; gap:24px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12px; letter-spacing:.05em;
+  }
+  .hero-top nav a{
+    color:rgba(243,236,220,.7); text-decoration:none;
+    text-transform:uppercase;
+  }
+  .hero-top nav a:hover{ color:var(--gold); }
+
+  .hero-main{
+    position:relative; z-index:2;
+    padding:64px 0 56px;
+    display:grid; grid-template-columns:1.3fr 1fr; gap:48px;
+    align-items:center;
+  }
+  .hero-main h1{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(2.4rem, 5.5vw, 4.1rem);
+    line-height:1.08; letter-spacing:-.01em;
+    color:#fff;
+    margin-bottom:22px;
+  }
+  .hero-main h1 em{
+    font-style:italic; color:var(--gold);
+  }
+  .hero-main .lede{
+    color:rgba(243,236,220,.82);
+    font-size:1.08rem;
+    max-width:48ch;
+    margin-bottom:28px;
+  }
+  .hero-main .lede strong{ color:#fff; font-weight:600; }
+
+  .hero-tags{
+    display:flex; flex-wrap:wrap; gap:10px;
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+  }
+  .hero-tags span{
+    border:1px solid rgba(243,236,220,.25);
+    color:rgba(243,236,220,.85);
+    padding:6px 13px; border-radius:3px;
+    text-transform:uppercase;
+  }
+
+  .hero-art{ width:100%; }
+  .hero-art svg{ width:100%; height:auto; display:block; }
+
+  @media (max-width:840px){
+    .hero-main{ grid-template-columns:1fr; gap:32px; }
+    .hero-art{ max-width:280px; margin:0 auto; }
+    .hero-top nav{ display:none; }
+  }
+
+  /* ---------- IDENTITY STRIP (below hero) ---------- */
+  .idstrip{
+    background:var(--cream);
+    border-bottom:1px solid var(--rule-2);
+  }
+  .idstrip .wrap{
+    display:grid; grid-template-columns:repeat(4, 1fr);
+    gap:0;
+  }
+  .idstrip dl{
+    padding:22px 24px; border-right:1px solid var(--rule);
+  }
+  .idstrip dl:last-child{ border-right:none; }
+  .idstrip dt{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-faint);
+    text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px;
+  }
+  .idstrip dd{
+    font-size:.92rem; color:var(--ink); font-weight:600;
+    font-family:var(--serif);
+  }
+  @media (max-width:760px){
+    .idstrip .wrap{ grid-template-columns:repeat(2, 1fr); }
+    .idstrip dl{ border-bottom:1px solid var(--rule); }
+    .idstrip dl:nth-child(2n){ border-right:none; }
+  }
+
+  /* ---------- TOC (simple inline rule) ---------- */
+  .toc{
+    border-bottom:1px solid var(--rule);
+    padding:14px 0;
+    display:none;
+  }
+  .toc .wrap{
+    display:flex; gap:28px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.04em;
+  }
+  .toc a{ color:var(--ink-soft); text-decoration:none; }
+  .toc a:hover{ color:var(--accent); text-decoration:underline; }
+  .toc .roman{ color:var(--ink-faint); margin-right:6px; }
+
+  /* ---------- INTRO ---------- */
+  .intro{ padding:64px 0 64px; }
+  .intro-grid{
+    display:grid; grid-template-columns:1fr 240px; gap:52px;
+  }
+  .intro h2{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(1.6rem, 3.6vw, 2.3rem);
+    line-height:1.3; margin-bottom:22px;
+    max-width:24ch;
+    color:var(--navy);
+  }
+  .intro p{ color:var(--ink-soft); max-width:62ch; margin-bottom:14px; }
+  .intro p strong{ color:var(--ink); font-weight:600; }
+
+  .portrait{
+    border:1px solid var(--rule-2);
+    padding:8px;
+    background:#fff;
+    box-shadow:0 12px 28px -16px rgba(33,29,23,.35);
+  }
+  .portrait img{ filter:sepia(.1) contrast(1.03); }
+  .portrait-cap{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-faint);
+    letter-spacing:.06em; text-transform:uppercase;
+    margin-top:10px; text-align:center;
+  }
+
+  @media (max-width:760px){
+    .intro-grid{ grid-template-columns:1fr; }
+    .portrait{ width:160px; }
+  }
+
+  .fact-line{
+    display:flex; flex-wrap:wrap; gap:6px 0;
+    font-family:var(--mono); font-size:13px; color:var(--ink-soft);
+    margin:26px 0 0; padding-top:18px; border-top:1px solid var(--rule);
+  }
+  .fact-line dt{
+    color:var(--rust); text-transform:uppercase; letter-spacing:.06em;
+    font-size:11px; width:120px; flex-shrink:0; font-weight:500;
+  }
+  .fact-line dd{ margin:0 0 8px 0; width:calc(100% - 120px); }
+  .fact-line > div{ display:flex; width:100%; }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding:56px 0; border-bottom:1px solid var(--rule); }
+  section:last-of-type{ border-bottom:none; }
+
+  .sec-num{
+    font-family:var(--mono); font-size:12px; color:var(--rust);
+    letter-spacing:.12em; text-transform:uppercase;
+    display:block; margin-bottom:8px; font-weight:500;
+  }
+  section > h2.sec-title{
+    font-family:var(--display); font-weight:700;
+    font-size:1.85rem; color:var(--navy);
+    border-bottom:1px solid var(--rule); padding-bottom:18px;
+    margin-bottom:32px;
+  }
+  .sec-intro{ color:var(--ink-soft); max-width:68ch; margin:-8px 0 30px; font-size:.97rem; }
+
+  /* ---------- RESEARCH FOCI ---------- */
+  .foci{ background:var(--navy); }
+  .foci .wrap > div{
+    padding:28px 26px; border-right:1px solid rgba(255,255,255,.1);
+    color:rgba(243,236,220,.92);
+  }
+  .foci .wrap > div:first-child{ padding-left:0; }
+  .foci .wrap > div:last-child{ border-right:none; padding-right:0; }
+  .foci h3{
+    margin-bottom:10px;
+    font-family:var(--mono); text-transform:uppercase; letter-spacing:.06em;
+    font-size:.78rem; color:var(--gold); font-weight:500;
+  }
+  .foci p{ color:rgba(243,236,220,.75); font-size:.93rem; }
+  @media (max-width:760px){
+    .foci .wrap{ grid-template-columns:1fr !important; }
+    .foci .wrap > div{ border-right:none; border-bottom:1px solid rgba(255,255,255,.1); padding-left:0; padding-right:0; }
+    .foci .wrap > div:last-child{ border-bottom:none; }
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .post{ padding:24px 0; border-top:1px solid var(--rule); }
+  .post:first-child{ border-top:none; padding-top:0; }
+  .post-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:16px; flex-wrap:wrap; margin-bottom:6px;
+  }
+  .post-head h3{ font-family:var(--display); font-size:1.25rem; font-weight:600; color:var(--navy); }
+  .post-when{
+    font-family:var(--mono); font-size:12px; color:var(--rust);
+    white-space:nowrap; font-weight:500;
+  }
+  .post-org{ font-style:italic; color:var(--ink-soft); font-size:.94rem; margin-bottom:10px; display:block; }
+  .post ul{ list-style:none; padding:0; }
+  .post li{
+    color:var(--ink-soft); font-size:.94rem; padding-left:1.2em;
+    position:relative; margin-bottom:5px;
+  }
+  .post li::before{
+    content:'—'; position:absolute; left:0; color:var(--ink-faint);
+  }
+  .post-stack{
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+    margin-top:10px; letter-spacing:.04em;
+  }
+
+  /* ---------- PUBLICATIONS ---------- */
+  .pub-filter{
+    display:flex; gap:18px; margin-bottom:28px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+  }
+  .pub-filter button{
+    background:none; border:none; padding:0; cursor:pointer;
+    color:var(--ink-faint); text-transform:uppercase;
+    border-bottom:1px solid transparent;
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+  }
+  .pub-filter button:hover{ color:var(--ink); }
+  .pub-filter button.active{ color:var(--rust); border-bottom-color:var(--rust); }
+
+  .pub-list{ list-style:none; }
+  .pub-item{
+    display:grid; grid-template-columns:2.4em 1fr auto; gap:16px;
+    padding:16px 0; border-top:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .pub-item:first-child{ border-top:none; }
+
+  .pub-idx{
+    font-family:var(--mono); font-size:13px; color:var(--rust);
+    font-weight:500;
+  }
+  .pub-main h3{
+    font-family:var(--serif);
+    font-size:1rem; font-weight:600; line-height:1.45; margin-bottom:4px;
+    color:var(--navy);
+  }
+  .pub-main .authors{ font-size:.86rem; color:var(--ink-faint); margin-bottom:3px; }
+  .pub-main .authors .me{ color:var(--ink-soft); font-weight:600; font-style:normal; }
+  .pub-main .venue{ font-style:italic; font-size:.88rem; color:var(--ink-soft); }
+  .pub-status{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink-faint);
+    white-space:nowrap; text-align:right;
+  }
+  .pub-status.in-review{ color:var(--rust); }
+
+  @media (max-width:680px){
+    .pub-item{ grid-template-columns:2em 1fr; }
+    .pub-status{ grid-column:2; text-align:left; padding-top:4px; }
+  }
+
+  /* ---------- TEACHING LIST ---------- */
+  .course-list{ }
+  .course{
+    display:grid; grid-template-columns:11em 1fr; gap:20px;
+    padding:16px 0; border-top:1px solid var(--rule);
+  }
+  .course:first-child{ border-top:none; padding-top:0; }
+  .course-code{
+    font-family:var(--mono); font-size:12px; color:var(--rust);
+    letter-spacing:.04em; padding-top:2px; font-weight:500;
+  }
+  .course h3{ font-family:var(--display); font-size:1.05rem; font-weight:600; margin-bottom:6px; color:var(--navy); }
+  .course p{ color:var(--ink-soft); font-size:.92rem; }
+  @media (max-width:640px){
+    .course{ grid-template-columns:1fr; gap:6px; }
+  }
+
+  /* ---------- OUTREACH ---------- */
+  .feature-block{
+    display:grid; grid-template-columns:120px 1fr; gap:24px;
+    padding:22px 0; border-top:1px solid var(--rule);
+  }
+  .feature-block:first-child{ border-top:none; padding-top:0; }
+  .feature-block .stat{
+    font-family:var(--display); font-size:2.1rem; font-weight:700; color:var(--rust);
+    line-height:1;
+  }
+  .feature-block .stat-label{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-faint);
+    letter-spacing:.06em; text-transform:uppercase; margin-top:6px;
+  }
+  .feature-block h3{ font-family:var(--display); font-size:1.15rem; font-weight:600; margin-bottom:8px; color:var(--navy); }
+  .feature-block p{ color:var(--ink-soft); font-size:.93rem; }
+  @media (max-width:600px){
+    .feature-block{ grid-template-columns:1fr; gap:8px; }
+  }
+
+  .figure{
+    margin:32px 0;
+    border:1px solid var(--rule-2);
+    background:#fff; padding:10px;
+    box-shadow:0 14px 32px -20px rgba(33,29,23,.4);
+  }
+  .figure img{ width:100%; }
+  .figure figcaption{
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+    letter-spacing:.04em; padding:12px 8px 6px; line-height:1.5;
+  }
+
+  /* press */
+  .press-list{ list-style:none; }
+  .press-item{
+    display:grid; grid-template-columns:1fr 9em; gap:16px;
+    padding:13px 0; border-top:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .press-item:first-child{ border-top:none; padding-top:0; }
+  .press-item a{ font-size:.96rem; }
+  .press-item .src{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-faint);
+    letter-spacing:.06em; text-transform:uppercase; text-align:right;
+  }
+  @media (max-width:600px){
+    .press-item{ grid-template-columns:1fr; gap:2px; }
+    .press-item .src{ text-align:left; }
+  }
+
+  /* ---------- AWARDS ---------- */
+  .award-item{
+    display:grid; grid-template-columns:1fr 9em; gap:16px;
+    padding:14px 0; border-top:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .award-item:first-child{ border-top:none; padding-top:0; }
+  .award-item h3{ font-family:var(--display); font-size:1rem; font-weight:600; color:var(--navy); }
+  .award-item .org{ font-size:.85rem; color:var(--ink-soft); }
+  .award-item .when{
+    font-family:var(--mono); font-size:11.5px; color:var(--rust);
+    text-align:right; font-weight:500;
+  }
+  @media (max-width:600px){
+    .award-item{ grid-template-columns:1fr; gap:2px; }
+    .award-item .when{ text-align:left; }
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  #contact{ background:var(--navy); color:var(--cream); border-bottom:none; }
+  #contact .sec-num{ color:var(--gold); }
+  #contact .sec-title{
+    color:#fff; border-bottom-color:rgba(255,255,255,.15);
+  }
+  #contact .sec-intro{ color:rgba(243,236,220,.8); }
+
+  .contact-list{
+    font-family:var(--mono); font-size:14px;
+    margin-top:18px;
+  }
+  .contact-list div{ padding:8px 0; }
+  .contact-list dt{
+    display:inline-block; width:110px; color:var(--gold);
+    text-transform:uppercase; font-size:11px; letter-spacing:.06em;
+  }
+  .contact-list a{ color:rgba(243,236,220,.92); }
+  .contact-list a:hover{ color:var(--gold); }
+
+  footer{
+    padding:36px 0 56px;
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+</style>
 </head>
+<body>
 
-<body id="page-top">
-
-    <!-- Navigation-->
-    <nav class="header navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a id="page-top-title" class="navbar-brand fw-bold" href="#page-top">V. Suthakar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                MENU
-                <i class="bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#home">ABOUT</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#teaching">TEACHING</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#outreach">OUTREACH</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#publications">PUBLICATIONS</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#awards">AWARDS</a></li>
-                </ul>
-            </div>
-        </div>
+<header class="hero">
+  <div class="wrap hero-top">
+    <div class="hero-mark">V. Suthakar — Earth &amp; Space Science, York University</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#outreach">Outreach</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
 
-    <!-- Hero -->
-    <header class="hero">
-        <div class="hero-top container px-4 px-lg-5">
-            <div class="hero-mark">V. Suthakar &mdash; Earth &amp; Space Science, York University</div>
-        </div>
+  <div class="wrap hero-main">
+    <div>
+      <h1>Tracking what we leave behind in <em>Earth orbit.</em></h1>
+      <p class="lede">
+        I'm <strong>Vithurshan Suthakar</strong>, a PhD candidate in Earth and Space Science at
+        York University. My research builds optical detection and image-processing pipelines for
+        <strong>Space Situational Awareness</strong> — from ground telescopes to stratospheric
+        balloon payloads and on-orbit star trackers.
+      </p>
+      <div class="hero-tags">
+        <span>RSO Detection</span>
+        <span>Star-Tracker Imaging</span>
+        <span>Stratospheric Payloads</span>
+        <span>Orbital Modelling</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of an elliptical orbital track around Earth with a detected object streak">
+        <circle cx="200" cy="200" r="46" fill="#2d3f5e" stroke="#d6a341" stroke-width="1.5" opacity="0.9"/>
+        <ellipse cx="200" cy="200" rx="160" ry="90" fill="none" stroke="rgba(243,236,220,.35)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(-18 200 200)"/>
+        <ellipse cx="200" cy="200" rx="120" ry="155" fill="none" stroke="rgba(243,236,220,.2)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(35 200 200)"/>
+        <!-- detection streak -->
+        <line x1="58" y1="118" x2="98" y2="138" stroke="#c1572f" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="100" cy="139" r="3.5" fill="#c1572f"/>
+        <!-- bounding box around detection -->
+        <rect x="44" y="106" width="68" height="46" fill="none" stroke="#d6a341" stroke-width="1" stroke-dasharray="3 3" opacity="0.8"/>
+        <!-- distant objects -->
+        <circle cx="320" cy="280" r="3" fill="#f3ecdc" opacity="0.7"/>
+        <circle cx="280" cy="90" r="2.5" fill="#f3ecdc" opacity="0.6"/>
+        <circle cx="340" cy="160" r="2" fill="#f3ecdc" opacity="0.5"/>
+        <circle cx="120" cy="320" r="2.5" fill="#f3ecdc" opacity="0.6"/>
+        <!-- labels -->
+        <text x="100" y="100" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d6a341" letter-spacing="1">RSO-0114</text>
+        <text x="200" y="206" font-family="IBM Plex Mono, monospace" font-size="9" fill="#f3ecdc" text-anchor="middle" letter-spacing="1" opacity="0.8">EARTH</text>
+      </svg>
+    </div>
+  </div>
+</header>
 
-        <div class="hero-main container px-4 px-lg-5">
-            <div class="hero-text">
-                <h1>Tracking what we leave behind in <em>Earth orbit.</em></h1>
-                <p class="lede">
-                    I'm <strong>Vithurshan Suthakar</strong>, a PhD candidate in Earth and Space Science at
-                    York University. My research builds optical detection and image-processing pipelines for
-                    <strong>Space Situational Awareness</strong> &mdash; from ground telescopes to stratospheric
-                    balloon payloads and on-orbit star trackers.
-                </p>
-                <div class="hero-tags">
-                    <span>RSO Detection</span>
-                    <span>Star-Tracker Imaging</span>
-                    <span>Stratospheric Payloads</span>
-                    <span>Orbital Modelling</span>
-                </div>
-            </div>
-            <div class="hero-portrait">
-                <div class="portrait-frame">
-                    <img src="static/assets/img/photo.png" alt="Portrait of Vithurshan Suthakar">
-                </div>
-                <div class="hero-art">
-                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of an elliptical orbital track with a detected object streak">
-                        <ellipse cx="200" cy="200" rx="180" ry="100" fill="none" stroke="rgba(243,236,220,.3)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(-18 200 200)"/>
-                        <ellipse cx="200" cy="200" rx="130" ry="170" fill="none" stroke="rgba(243,236,220,.18)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(35 200 200)"/>
-                        <line x1="58" y1="118" x2="98" y2="138" stroke="#c1572f" stroke-width="2.5" stroke-linecap="round"/>
-                        <circle cx="100" cy="139" r="3.5" fill="#c1572f"/>
-                        <rect x="44" y="106" width="68" height="46" fill="none" stroke="#d6a341" stroke-width="1" stroke-dasharray="3 3" opacity="0.85"/>
-                        <circle cx="330" cy="270" r="3" fill="#f3ecdc" opacity="0.7"/>
-                        <circle cx="290" cy="80" r="2.5" fill="#f3ecdc" opacity="0.6"/>
-                        <circle cx="350" cy="150" r="2" fill="#f3ecdc" opacity="0.5"/>
-                        <text x="100" y="100" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d6a341" letter-spacing="1">RSO-0114</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </header>
+<div class="idstrip">
+  <div class="wrap">
+    <dl>
+      <dt>Position</dt>
+      <dd>PhD Candidate</dd>
+    </dl>
+    <dl>
+      <dt>Institution</dt>
+      <dd>York University</dd>
+    </dl>
+    <dl>
+      <dt>Supervisor</dt>
+      <dd>Dr. Regina Lee</dd>
+    </dl>
+    <dl>
+      <dt>Location</dt>
+      <dd>Toronto, Canada</dd>
+    </dl>
+  </div>
+</div>
 
-    <!-- Identity strip -->
-    <div class="idstrip">
-        <div class="container px-4 px-lg-5">
-            <dl><dt>Position</dt><dd>PhD Candidate</dd></dl>
-            <dl><dt>Institution</dt><dd>York University</dd></dl>
-            <dl><dt>Supervisor</dt><dd>Dr. Regina Lee</dd></dl>
-            <dl><dt>Location</dt><dd>Toronto, Canada</dd></dl>
+<main>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section id="about" style="padding-bottom:0; border-bottom:none;">
+    <div class="intro">
+      <div class="intro-grid">
+        <div>
+          <h2>Imaging and tracking objects in Earth orbit, from telescopes on the ground to payloads in the stratosphere.</h2>
+          <p>
+            I'm a PhD candidate in Earth and Space Science at York University, supervised by
+            <strong>Dr. Regina Lee</strong>. My work sits between optical instrumentation and image
+            processing, applied to <strong>Resident Space Object (RSO) detection, tracking, and
+            characterization</strong> — built from ground-based telescopes, stratospheric balloon
+            payloads, and on-orbit star-tracker imagery.
+          </p>
+          <p>
+            My doctoral research extends my MSc thesis, <em>Image Processing for Stratospheric-Based
+            Space Situational Awareness</em>, toward space-based and high-altitude platforms for
+            tracking debris and active satellites in increasingly congested orbital regimes. I've
+            contributed to the <strong>RSONAR</strong> stratospheric balloon program and the
+            <strong>SOBER</strong> mission, selected through ESA's REXUS/BEXUS programme — from
+            payload design and sensor integration through to the detection algorithms that process
+            the resulting imagery.
+          </p>
+          <p>
+            Alongside research, I work as a teaching assistant across astronomy, planetary science,
+            optics, and geophysics courses, and take part regularly in public space-science outreach.
+          </p>
         </div>
+        <div>
+          <div class="portrait">
+            <img src="static/assets/img/photo.png" alt="Portrait of Vithurshan Suthakar">
+          </div>
+          <div class="portrait-cap">Toronto, Ontario</div>
+        </div>
+      </div>
+
+      <dl class="fact-line">
+        <div><dt>Institution</dt><dd>York University, Lassonde School of Engineering</dd></div>
+        <div><dt>Programme</dt><dd>PhD, Earth and Space Science (05/2024 – present)</dd></div>
+        <div><dt>Supervisor</dt><dd>Dr. Regina Lee</dd></div>
+        <div><dt>Research</dt><dd>Optical RSO detection · star-tracker imaging · SSA / SDA</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- RESEARCH FOCI (full-bleed) -->
+  </div>
+  <div class="foci">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(3,1fr); padding:0;">
+      <div>
+        <h3>Detection &amp; tracking</h3>
+        <p>Streak analysis, multi-frame stacking, and detection of tiny or unresolved objects in wide-field and star-tracker imagery.</p>
+      </div>
+      <div>
+        <h3>Stratospheric payloads</h3>
+        <p>Optical and infrared sensor payloads for balloon-based observation campaigns flown above 25&nbsp;km altitude.</p>
+      </div>
+      <div>
+        <h3>Orbital modelling &amp; catalogues</h3>
+        <p>Coordinate transformations (ECI/ECEF), TLE propagation, and covariance-aware catalogue association.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <span class="sec-num">II</span>
+    <h2 class="sec-title">Experience</h2>
+
+    <div class="post">
+      <div class="post-head">
+        <h3>Software Engineer — C++ &amp; Python</h3>
+        <span class="post-when">May 2022 — present</span>
+      </div>
+      <span class="post-org">York University, RSONAR Stratospheric Balloon Missions</span>
+      <ul>
+        <li>Designed and tested payload systems for high-altitude SSA missions, focused on sensor integration and autonomous operation.</li>
+        <li>Built image processing pipelines analyzing 300,000+ space-based images for RSO detection and characterization.</li>
+        <li>Performed sensor interfacing, hardware integration, and environmental (thermal/vacuum) testing.</li>
+        <li>Implemented orbital modelling and coordinate transformations (ECI, ECEF, quaternions) for RSOs and observer reference frames.</li>
+        <li>Ran flight simulations and optimized system parameters for imaging performance and reliability.</li>
+      </ul>
+      <span class="post-stack">Python — C++ — OpenCV — CUDA</span>
     </div>
 
-    <!-- About / Home -->
-    <section id="home">
-        <div class="container px-4 px-lg-5">
-            <div class="sec-head reveal">
-                <span class="sec-num">I</span>
-                <h2 id="home-subtitle" class="sec-title">About</h2>
-            </div>
-            <div class="main-body reveal" id="home-md"></div>
-        </div>
-    </section>
-
-    <!-- Research foci (full-bleed band) -->
-    <div class="foci">
-        <div class="container px-4 px-lg-5 foci-grid reveal">
-            <div>
-                <h3>Detection &amp; Tracking</h3>
-                <p>Streak analysis, multi-frame stacking, and detection of tiny or unresolved objects in wide-field and star-tracker imagery.</p>
-            </div>
-            <div>
-                <h3>Stratospheric Payloads</h3>
-                <p>Optical and infrared sensor payloads for balloon-based observation campaigns flown above 25&nbsp;km altitude.</p>
-            </div>
-            <div>
-                <h3>Orbital Modelling &amp; Catalogues</h3>
-                <p>Coordinate transformations (ECI/ECEF), TLE propagation, and covariance-aware catalogue association.</p>
-            </div>
-        </div>
+    <div class="post">
+      <div class="post-head">
+        <h3>Science Lead — SOBER Mission (ESA BEXUS 37)</h3>
+        <span class="post-when">Oct 2024 — May 2025</span>
+      </div>
+      <span class="post-org">Proposed via REXUS/BEXUS Workshop, ESA</span>
+      <ul>
+        <li>Proposed the SOBER mission based on my master's SSA research, selected at ESA's REXUS/BEXUS Workshop.</li>
+        <li>Designed a stratospheric payload using optical and infrared sensors for RSO brightness characterization above 25 km altitude.</li>
+        <li>Led STK-based performance simulations and sensor trade studies — tracking duration, SNR, spatial resolution.</li>
+        <li>Presented mission outcomes at the 9th European Conference on Space Debris, including data fusion with ESA DISCOS, GCAT, and public SSA catalogues.</li>
+      </ul>
+      <span class="post-stack">Python — STK</span>
     </div>
 
-    <!-- Teaching -->
-    <section id="teaching">
-        <div class="container px-4 px-lg-5">
-            <div class="sec-head reveal">
-                <span class="sec-num">II</span>
-                <h2 id="teaching-subtitle" class="sec-title">Teaching</h2>
-            </div>
-            <div class="main-body reveal" id="teaching-md"></div>
+    <div class="post">
+      <div class="post-head">
+        <h3>Flight Software Developer</h3>
+        <span class="post-when">Feb 2025 — May 2025</span>
+      </div>
+      <span class="post-org">Magellan Aerospace</span>
+      <ul>
+        <li>Performed pre-mission design analysis in AGI STK to assess orbital access and coverage for a SAR satellite constellation.</li>
+        <li>Developed firmware for multi-sensor payloads using NASA Core Flight Software (cFS) for a Canadian SSA mission.</li>
+        <li>Integrated real-time sensor data streams and ran unit/integration testing in an ISO 8 cleanroom.</li>
+        <li>Applied uncertainty quantification for task scheduling and performance modelling in autonomous systems.</li>
+      </ul>
+      <span class="post-stack">C — Bash — Git — Docker</span>
+    </div>
+
+    <div class="post">
+      <div class="post-head">
+        <h3>Microfabrication Facility Assistant</h3>
+        <span class="post-when">May 2022 — Mar 2023</span>
+      </div>
+      <span class="post-org">York University Microfabrication Facility (YMF)</span>
+      <ul>
+        <li>Operated and maintained microfabrication tools (PECVD, MOCVD, PVD, plasma etch, e-beam evaporator, sputtering) with zero downtime.</li>
+        <li>Produced and inspected 100+ photomasks using laser plotting and optical microscopy for graduate research components.</li>
+        <li>Maintained lab safety and process reliability; trained and onboarded new researchers.</li>
+      </ul>
+      <span class="post-stack">Java — JavaScript</span>
+    </div>
+
+    <div class="post">
+      <div class="post-head">
+        <h3>Electrical Team Member — ESSENCE CubeSat</h3>
+        <span class="post-when">Oct 2021 — May 2022</span>
+      </div>
+      <span class="post-org">Electrical Educational Space Science and Engineering CubeSat Experiment</span>
+      <ul>
+        <li>Created schematics and layouts for a multi-layer PCB with SDRAM and FRAM chips.</li>
+        <li>Verified PCB RAM board pinouts and integrated with microcontrollers.</li>
+        <li>Researched and selected components to meet mission requirements.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <span class="sec-num">III</span>
+    <h2 class="sec-title">Publications &amp; conferences</h2>
+    <p class="sec-intro">
+      Journal articles, conference papers, and works in review or preparation, spanning RSO
+      detection algorithms, star-tracker benchmarking, and stratospheric SSA demonstration missions.
+      A complete list is also kept on
+      <a href="https://scholar.google.ca/citations?user=628lIjAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+    </p>
+
+    <div class="pub-filter" role="group" aria-label="Filter publications by type">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="journal">Journal</button>
+      <button data-filter="conference">Conference</button>
+      <button data-filter="review">In review / in prep</button>
+    </div>
+
+    <ul class="pub-list" id="pub-list">
+
+      <li class="pub-item" data-type="review">
+        <span class="pub-idx">1.</span>
+        <div class="pub-main">
+          <h3>RSONAR: Data-Driven Evaluation of Dual-Use Star Tracker for Stratospheric Space Situational Awareness (SSA)</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Porto, I., Myhre, M., Sanvido, A.A., Clark, R., Lee, R.S.K.</p>
+          <p class="venue">Sensors, vol. 26, p. 179, 2026</p>
         </div>
-    </section>
+        <span class="pub-status">Published</span>
+      </li>
 
-    <!-- Outreach -->
-    <section id="outreach">
-        <div class="container px-4 px-lg-5">
-            <div class="sec-head reveal">
-                <span class="sec-num">III</span>
-                <h2 id="outreach-subtitle" class="sec-title">Outreach</h2>
-            </div>
-
-            <figure class="figure reveal">
-                <img src="static/assets/img/background.jpeg" alt="A dense grid of handwritten notes, drawings, and signatures submitted by Ontario Science Centre visitors for a near-space payload">
-                <figcaption>
-                    Messages collected from visitors during "Satellites &amp; You" at the Ontario Science Centre &mdash;
-                    written for engraving onto a near-space payload as part of one of Professor Lee's nanosatellite missions.
-                </figcaption>
-            </figure>
-
-            <div class="main-body reveal" id="outreach-md"></div>
+      <li class="pub-item" data-type="journal">
+        <span class="pub-idx">2.</span>
+        <div class="pub-main">
+          <h3>Light-Curve Classification of Resident Space Objects for Space Situational Awareness: A Scoping Review</h3>
+          <p class="authors">Hwang, M., <span class="me">Suthakar, V.</span>, Qashoa, R., Lee, R.S.K., Sohn, G.</p>
+          <p class="venue">Aerospace, vol. 13, no. 3, p. 287, 2026</p>
         </div>
-    </section>
+        <span class="pub-status">Published</span>
+      </li>
 
-    <!-- Publications -->
-    <section id="publications">
-        <div class="container px-4 px-lg-5">
-            <div class="sec-head reveal">
-                <span class="sec-num">IV</span>
-                <h2 id="publications-subtitle" class="sec-title">Publications</h2>
-            </div>
-            <p class="sec-intro reveal">
-                A complete and continuously updated list is kept on
-                <a href="https://scholar.google.ca/citations?user=628lIjAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
-            </p>
-            <div class="main-body reveal" id="publications-md"></div>
+      <li class="pub-item" data-type="journal">
+        <span class="pub-idx">3.</span>
+        <div class="pub-main">
+          <h3>Resident Space Object (RSO) Tracking in Space-Based, Low Resolution, Non-Constant-Attitude Imagery</h3>
+          <p class="authors">Kunalakantha, P., <span class="me">Suthakar, V.</span>, Harrison, P., Driedger, M., Qashoa, R., Chianelli, G., Lee, R.S.K.</p>
+          <p class="venue">Remote Sensing, vol. 18, no. 5, p. 755, 2026</p>
         </div>
-    </section>
+        <span class="pub-status">Published</span>
+      </li>
 
-    <!-- Awards -->
-    <section id="awards">
-        <div class="container px-4 px-lg-5">
-            <div class="sec-head reveal">
-                <span class="sec-num">V</span>
-                <h2 id="awards-subtitle" class="sec-title">Awards &amp; Funding</h2>
-            </div>
-            <div class="main-body reveal" id="awards-md"></div>
+      <li class="pub-item" data-type="journal">
+        <span class="pub-idx">4.</span>
+        <div class="pub-main">
+          <h3>OrbitTrack: Advanced RSO Detection and Tracking from Wide Field-of-View On-Orbit Images</h3>
+          <p class="authors">Jeong, Y., <span class="me">Suthakar, V.</span>, Qashoa, R., Sohn, G., Lee, R.S.K.</p>
+          <p class="venue">Advances in Space Research, 2025</p>
         </div>
-    </section>
+        <span class="pub-status">Published</span>
+      </li>
 
-    <!-- Contact / Footer-->
-    <footer class="bg-bottom text-center py-5">
-        <div class="container px-4 px-lg-5">
-            <div class="footer-contact">
-                <a href="mailto:Vithurs@my.yorku.ca">Vithurs@my.yorku.ca</a>
-                <span class="sep">&middot;</span>
-                <a href="https://scholar.google.ca/citations?user=628lIjAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-                <span class="sep">&middot;</span>
-                <a href="https://www.linkedin.com/in/vithurshansuthakar/" target="_blank" rel="noopener">LinkedIn</a>
-                <span class="sep">&middot;</span>
-                <a href="https://github.com/VithurshanSuthakar" target="_blank" rel="noopener">GitHub</a>
-            </div>
-            <div class="text-white-50 small">
-                <div id="copyright-text" class="mb-2"></div>
-                <a id="github-link" href="https://github.com/VithurshanSuthakar">Source</a>
-                <span class="mx-1">&middot;</span>
-                <a id="license-link" href="https://github.com/VithurshanSuthakar/VithurshanSuthakar.github.io/blob/main/LICENSE">License</a>
-            </div>
+      <li class="pub-item" data-type="journal">
+        <span class="pub-idx">5.</span>
+        <div class="pub-main">
+          <h3>Technology Demonstration of Space Situational Awareness (SSA) Mission on Stratospheric Balloon Platform</h3>
+          <p class="authors">Qashoa, R., <span class="me">Suthakar, V.</span>, Chianelli, G., Kunalakantha, P., Lee, R.S.K.</p>
+          <p class="venue">Remote Sensing, vol. 16, no. 5, p. 749, 2024</p>
         </div>
-    </footer>
+        <span class="pub-status">Published</span>
+      </li>
+
+      <li class="pub-item" data-type="journal">
+        <span class="pub-idx">6.</span>
+        <div class="pub-main">
+          <h3>Comparative Analysis of Resident Space Object (RSO) Detection Methods</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Sanvido, A.A., Qashoa, R., Lee, R.S.K.</p>
+          <p class="venue">Sensors, vol. 23, no. 24, p. 9668, 2023</p>
+        </div>
+        <span class="pub-status">Published</span>
+      </li>
+
+      <li class="pub-item" data-type="review">
+        <span class="pub-idx">7.</span>
+        <div class="pub-main">
+          <h3>DUST: An On-Orbit Star-Tracker Benchmark for RSO Detection and Attitude Estimation</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Kunalakantha, P., Lee, R.S.K., Sohn, G.</p>
+          <p class="venue">Scientific Data (Nature)</p>
+        </div>
+        <span class="pub-status in-review">Under review</span>
+      </li>
+
+      <li class="pub-item" data-type="review">
+        <span class="pub-idx">8.</span>
+        <div class="pub-main">
+          <h3>Space Situational Awareness in Very Low Earth Orbit for Re-entry Object Monitoring</h3>
+          <p class="authors">Huang, R., Lee, R.S.K., Veltri, M., <span class="me">Suthakar, V.</span>, Porras-Hermoso, A.</p>
+          <p class="venue">Aerospace</p>
+        </div>
+        <span class="pub-status in-review">Under review</span>
+      </li>
+
+      <li class="pub-item" data-type="review">
+        <span class="pub-idx">9.</span>
+        <div class="pub-main">
+          <h3>Resident Space Object Streak Analysis in Wide-Field Imaging Dataset: Stacking, Characterization, and Comparative Evaluation</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">Advances in Space Research</p>
+        </div>
+        <span class="pub-status in-review">In preparation</span>
+      </li>
+
+      <li class="pub-item" data-type="review">
+        <span class="pub-idx">10.</span>
+        <div class="pub-main">
+          <h3>Benchmark Starfield Dataset and Automated Data Labelling for Unresolved Resident Space Object (RSO) Tracking Algorithm Development</h3>
+          <p class="authors">Kunalakantha, P., <span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">Sensors</p>
+        </div>
+        <span class="pub-status in-review">In preparation</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">11.</span>
+        <div class="pub-main">
+          <h3>E-STAR: Design and Stratospheric Demonstration of an Event-Based Star-Field and Resident Space Object Imaging Payload</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">Advanced Maui Optical and Space Surveillance (AMOS) Technologies Conference — accepted</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">12.</span>
+        <div class="pub-main">
+          <h3>Orbit Association of Resident Space Objects in ESA Swarm Star-Tracker Imagery: Covariance-Aware Catalogue Matching and Cross-Satellite Validation in Near-Polar Orbits</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Basi, K., Lee, R.S.K.</p>
+          <p class="venue">77th International Astronautical Congress (IAC), Antalya, Türkiye — accepted</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">13.</span>
+        <div class="pub-main">
+          <h3>Spectral Enhancement and Multi-Frame Super-Resolution for Tiny Resident Space Object Detection in Star Tracker Imagery</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Lee, R.S.K., Sohn, G.</p>
+          <p class="venue">45th COSPAR Scientific Assembly — accepted</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">14.</span>
+        <div class="pub-main">
+          <h3>Shallow Neural Network Centroid Algorithm Comparison for a Dual-Use Star Tracker Payload for Space Situational Awareness</h3>
+          <p class="authors">Myhre, M., Porto, I., <span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">45th COSPAR Scientific Assembly — accepted</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">15.</span>
+        <div class="pub-main">
+          <h3>Centroid Algorithm Comparison in a Dual-Use Star Tracker for Space Situational Awareness</h3>
+          <p class="authors">Myhre, M., Porto, I., <span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">5th IAA Conf. Space Situational Awareness (ICSSA), Tres Cantos–Madrid, 2026 (IAA ICSSA-26-00-49)</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">16.</span>
+        <div class="pub-main">
+          <h3>Thermo-Optical Characterization and Qualification of a Space Situational Awareness (SSA) Payload</h3>
+          <p class="authors">Porto, I., Myhre, M., <span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">5th IAA Conf. Space Situational Awareness (ICSSA), Tres Cantos–Madrid, 2026 (IAA-ICSSA-26-00-60)</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">17.</span>
+        <div class="pub-main">
+          <h3>Near-Space Technology Demonstration for Low Earth Orbit (LEO) Space Situational Awareness</h3>
+          <p class="authors">Alli, R., <span class="me">Suthakar, V.</span>, Dobrzanki, D., Lee, R.S.K.</p>
+          <p class="venue">Canadian CubeSat Conference 2026</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">18.</span>
+        <div class="pub-main">
+          <h3>AI-Driven Detection of Resident Space Objects (RSOs) Using Monochromatic Wide-Field Imaging for Space Situational Awareness</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">Global Space Exploration Conference (GLEX), 2025</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">19.</span>
+        <div class="pub-main">
+          <h3>ORBIT: Open-Source Research for Better Identification and Tracking of Space Objects</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Sanvido, A.A., Vellani, M., Brown, E., Lee, R.S.K.</p>
+          <p class="venue">SpaceOps 2025</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">20.</span>
+        <div class="pub-main">
+          <h3>Stratospheric Observation of Resident Space Objects Using Photometric and Infrared Sensors</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Porto, I., Dasanayaka, S.K.M., Lee, R.S.K., et al.</p>
+          <p class="venue">9th European Conference on Space Debris, 2025</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">21.</span>
+        <div class="pub-main">
+          <h3>Stratospheric Balloon-Based Observation of Resident Space Objects for Enhanced Space Situational Awareness</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Sanvido, A.A., Lee, R.S.K.</p>
+          <p class="venue">CASI ASTRO, 2024</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">22.</span>
+        <div class="pub-main">
+          <h3>Lessons Learned From Technology Demonstration of Space Situational Awareness Satellite</h3>
+          <p class="authors">Qashoa, R., Kunalakantha, P., Chianelli, G., <span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">Small Satellite Conference, 2024</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+      <li class="pub-item" data-type="conference">
+        <span class="pub-idx">23.</span>
+        <div class="pub-main">
+          <h3>Using Optical Sensors for SSA Detection Analysis on the 3000 Starlink Series</h3>
+          <p class="authors"><span class="me">Suthakar, V.</span>, Lee, R.S.K.</p>
+          <p class="venue">CREATE Annual Conference, 2024</p>
+        </div>
+        <span class="pub-status">Conference</span>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <span class="sec-num">IV</span>
+    <h2 class="sec-title">Teaching</h2>
+    <p class="sec-intro">
+      Graduate teaching assistant across astronomy, planetary science, geophysics, and applied
+      physics courses, plus lab development and capstone supervision at York University.
+    </p>
+
+    <div class="course-list">
+      <div class="course">
+        <span class="course-code">ENG 4000<br>2024 — present</span>
+        <div>
+          <h3>Engineering Capstone Project Advisor</h3>
+          <p>Advised a telescope-based Differential Image Motion Monitor (DIMM) capstone for satellite-to-ground optical communications. The team placed top three at Lassonde Capstone Day and presented at the Canadian Space Agency.</p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="course-code">ESSE 2030</span>
+        <div>
+          <h3>Geophysics and Space Science</h3>
+          <p>Developed a new hands-on FMCW radar-characterization lab using the QM-RDK demonstration kit — manual, safety procedures, data tables, and assessments.</p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="course-code">NATS 1745</span>
+        <div>
+          <h3>Astronomy / History of Astronomy</h3>
+          <p>Supported learning across naked-eye astronomy, solar system objects, stars, galaxies, telescopes, and the development of astronomical methods.</p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="course-code">NATS 1570</span>
+        <div>
+          <h3>Exploring the Solar System</h3>
+          <p>Facilitated learning on planetary science, solar system formation, missions, and the observational evidence used to understand planets, moons, and small bodies.</p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="course-code">NATS 1880</span>
+        <div>
+          <h3>Life Beyond Earth</h3>
+          <p>Led tutorials and assessments focused on astrobiology, planetary habitability, and critical thinking in scientific literacy.</p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="course-code">PHYS 1801 / 2211 / 1422</span>
+        <div>
+          <h3>Electromagnetism &amp; optics labs</h3>
+          <p>Led tutorials and labs across engineering, life-science, and second-year experimental EM courses — circuit prototyping, oscilloscopes, function generators, applied problem-solving.</p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="course-code">NATS 1750 / ESSE 1012</span>
+        <div>
+          <h3>Earth &amp; atmosphere</h3>
+          <p>Lab instruction and grading on geology, Earth systems, climate, minerals, plate tectonics, geologic time, and planetary exploration.</p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="course-code">NATS 1795 / ENG 3000</span>
+        <div>
+          <h3>The Nature of Time &amp; professional practice</h3>
+          <p>Supported discussions spanning timekeeping to relativity, and led sessions on ethics, law, and professional standards in engineering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTREACH -->
+  <section id="outreach">
+    <span class="sec-num">V</span>
+    <h2 class="sec-title">Outreach</h2>
+
+    <div class="feature-block">
+      <div>
+        <div class="stat">2,000+</div>
+        <div class="stat-label">Attendees engaged</div>
+      </div>
+      <div>
+        <h3>Space Situational Awareness and Us — Ontario Science Centre, 2023</h3>
+        <p>Designed and presented SSA outreach sessions for over 2,000 attendees, engaging children and parents through interactive education. Led an audience-driven payload initiative collecting and engraving messages for a near-space launch as part of the "Satellites &amp; You" program.</p>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div>
+        <div class="stat">01/26</div>
+        <div class="stat-label">Guest seminar</div>
+      </div>
+      <div>
+        <h3>Space Situational Awareness &amp; Sustainability</h3>
+        <p>Invited guest seminar for Students for the Exploration and Development of Space (SEDS) Canada.</p>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div>
+        <div class="stat">'23</div>
+        <div class="stat-label">Gallery exhibit</div>
+      </div>
+      <div>
+        <h3>The Life Cycle of Celestial Objects, Pts. 1 &amp; 2</h3>
+        <p>McIntosh Gallery Exhibit, Western University. Coordinated collaborations between York's Nanosatellite Research Laboratory and artists, developed interactive exhibits including the "Circuit Board Graveyard," and facilitated public workshops and panels on art, science, and space exploration.</p>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div>
+        <div class="stat">'22–</div>
+        <div class="stat-label">Ongoing</div>
+      </div>
+      <div>
+        <h3>Science Explorations Summer Camp &amp; high schools</h3>
+        <p>Delivered talks on astronomy and space engineering to students of varying ages and skill levels, alongside the 2024 Development of a CubeSat for Stratospheric Ballooning entry at the York Region Science &amp; Technology Fair.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.05rem; font-weight:600; margin:34px 0 16px; border-top:1px solid var(--rule); padding-top:28px;">Press</h3>
+    <ul class="press-list">
+      <li class="press-item">
+        <a href="https://lassonde.yorku.ca/lassonde-professor-launches-satellite-research-event-at-the-ontario-science-centre-as-part-of-an-interdisciplinary-project" target="_blank" rel="noopener">Lassonde professor launches satellite research event at the Ontario Science Centre as part of an interdisciplinary project</a>
+        <span class="src">Lassonde, 2023</span>
+      </li>
+      <li class="press-item">
+        <a href="https://www.yorku.ca/yfile/2023/04/19/york-professors-highlight-sustainability-in-space/" target="_blank" rel="noopener">York professors highlight sustainability in space</a>
+        <span class="src">YFile, 2023</span>
+      </li>
+      <li class="press-item">
+        <a href="https://lassonde.yorku.ca/scientific-instrument-developed-at-lassonde-fly-high-above-the-clouds-during-strato-science-2023-campaign" target="_blank" rel="noopener">Scientific instrument developed at Lassonde flies high above the clouds during Strato-Science 2023</a>
+        <span class="src">Lassonde, 2023</span>
+      </li>
+      <li class="press-item">
+        <a href="https://www.timminspress.com/news/third-balloon-flight-measured-space-debris-light-pollution" target="_blank" rel="noopener">Third balloon flight measured space debris, light pollution</a>
+        <span class="src">Timmins Press</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <span class="sec-num">VI</span>
+    <h2 class="sec-title">Awards &amp; funding</h2>
+
+    <div class="award-item">
+      <div>
+        <h3>Ontario Graduate Scholarship (OGS) &amp; Queen Elizabeth II Graduate Scholarship in Science and Technology (QEII)</h3>
+        <span class="org">Ontario Ministry of Colleges and Universities</span>
+      </div>
+      <span class="when">2026</span>
+    </div>
+    <div class="award-item">
+      <div>
+        <h3>International Conference on Space Operations (SpaceOps) 2025 award</h3>
+        <span class="org">Canadian Space Agency</span>
+      </div>
+      <span class="when">05/2025</span>
+    </div>
+    <div class="award-item">
+      <div>
+        <h3>CUPE Masters Bursary Fund</h3>
+        <span class="org">Awarded twice</span>
+      </div>
+      <span class="when">07/2023, 04/2025</span>
+    </div>
+    <div class="award-item">
+      <div>
+        <h3>NSERC CREATE — Microsystems Technologies &amp; Application (MTA)</h3>
+        <span class="org">Design, fabrication, and testing of an integrated microsystem</span>
+      </div>
+      <span class="when">09/2023</span>
+    </div>
+    <div class="award-item">
+      <div>
+        <h3>NSERC CREATE — Microsystems Technologies &amp; Application (MTA)</h3>
+        <span class="org">Optimal photolithography mask production parameters, RP325+LXT / Hope–Carnfeldt EG 750</span>
+      </div>
+      <span class="when">09/2022</span>
+    </div>
+    <div class="award-item">
+      <div>
+        <h3>Research at York</h3>
+        <span class="org">Applied laboratory work at the York Microfabrication Facility</span>
+      </div>
+      <span class="when">05/2022</span>
+    </div>
+    <div class="award-item">
+      <div>
+        <h3>Mitacs Accelerate Internship</h3>
+        <span class="org">SPACEDUST project, with Magellan Aerospace and C-CORE — awarded twice</span>
+      </div>
+      <span class="when">03/2022</span>
+    </div>
+  </section>
+
+  </div>
+  <section id="contact">
+    <div class="wrap">
+    <span class="sec-num">VII</span>
+    <h2 class="sec-title">Contact</h2>
+    <p class="sec-intro" style="margin-bottom:0;">
+      Open to collaboration on SSA-related research, observation campaigns, and student
+      supervision opportunities.
+    </p>
+    <div class="contact-list">
+      <div><dt>Email</dt><a href="mailto:Vithurs@my.yorku.ca">Vithurs@my.yorku.ca</a></div>
+      <div><dt>Scholar</dt><a href="https://scholar.google.ca/citations?user=628lIjAAAAAJ&hl=en" target="_blank" rel="noopener">scholar.google.ca/citations?user=628lIjAAAAAJ</a></div>
+      <div><dt>LinkedIn</dt><a href="https://www.linkedin.com/in/vithurshansuthakar/" target="_blank" rel="noopener">linkedin.com/in/vithurshansuthakar</a></div>
+      <div><dt>GitHub</dt><a href="https://github.com/VithurshanSuthakar" target="_blank" rel="noopener">github.com/VithurshanSuthakar</a></div>
+    </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>Vithurshan Suthakar — Earth &amp; Space Science, York University</span>
+  <span>Toronto, Canada</span>
+</footer>
+
+<script>
+  (function(){
+    const buttons = document.querySelectorAll('.pub-filter button');
+    const items = document.querySelectorAll('.pub-item');
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        buttons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        items.forEach(item=>{
+          item.style.display = (f==='all' || item.dataset.type===f) ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
 
 </body>
-
 </html>
+
