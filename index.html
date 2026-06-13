@@ -5,6 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vithurshan Suthakar</title>
 <meta name="description" content="Vithurshan Suthakar, PhD researcher in Earth and Space Science at York University. Optical detection and image processing for Space Situational Awareness.">
+<meta name="author" content="Vithurshan Suthakar">
+<meta name="theme-color" content="#1f2c44">
+<link rel="canonical" href="https://vithurshansuthakar.github.io/">
+
+<!-- Social previews -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Vithurshan Suthakar — Space Situational Awareness Research">
+<meta property="og:description" content="PhD candidate at York University building optical detection and image-processing pipelines for Space Situational Awareness — ground telescopes, stratospheric balloons, and on-orbit star trackers.">
+<meta property="og:url" content="https://vithurshansuthakar.github.io/">
+<meta property="og:image" content="https://vithurshansuthakar.github.io/assets/satellites-and-us.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vithurshan Suthakar — Space Situational Awareness Research">
+<meta name="twitter:description" content="Optical RSO detection, star-tracker imaging, and stratospheric SSA payloads at York University.">
+<meta name="twitter:image" content="https://vithurshansuthakar.github.io/assets/satellites-and-us.jpg">
+
+<!-- Favicon: orbit + detection streak, matching the hero illustration -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231f2c44'/%3E%3Ccircle cx='32' cy='34' r='9' fill='%232d3f5e' stroke='%23d6a341' stroke-width='1.4'/%3E%3Cellipse cx='32' cy='34' rx='24' ry='13' fill='none' stroke='%23f3ecdc' stroke-opacity='.45' stroke-width='1.2' stroke-dasharray='2 4' transform='rotate(-18 32 34)'/%3E%3Cline x1='12' y1='14' x2='22' y2='19' stroke='%23c1572f' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='19.5' r='2' fill='%23c1572f'/%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vithurshan Suthakar",
+  "url": "https://vithurshansuthakar.github.io/",
+  "jobTitle": "PhD Candidate, Earth and Space Science",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "York University, Lassonde School of Engineering"
+  },
+  "knowsAbout": ["Space Situational Awareness", "Resident Space Object detection", "Star trackers", "Stratospheric balloon payloads", "Orbital dynamics", "Computer vision"],
+  "email": "mailto:Vithurs@my.yorku.ca",
+  "sameAs": [
+    "https://scholar.google.ca/citations?user=628lIjAAAAAJ",
+    "https://www.linkedin.com/in/vithurshansuthakar/",
+    "https://github.com/VithurshanSuthakar"
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +76,20 @@
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *, *::before, *::after{ animation:none !important; transition:none !important; }
+  }
+  section[id]{ scroll-margin-top:64px; }
+
+  .skip-link{
+    position:absolute; left:-9999px; top:0; z-index:100;
+    background:var(--rust); color:#fff; padding:10px 18px;
+    font-family:var(--mono); font-size:13px; text-decoration:none;
+  }
+  .skip-link:focus{ left:0; }
 
   body{
     background-color:var(--paper);
@@ -108,6 +160,15 @@
   }
   .hero-top nav a:hover{ color:var(--gold); }
 
+  .menu-btn{
+    display:none;
+    background:none; border:1px solid rgba(243,236,220,.35);
+    color:rgba(243,236,220,.85); border-radius:3px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; padding:7px 14px; cursor:pointer;
+  }
+  .menu-btn:hover{ border-color:var(--gold); color:var(--gold); }
+
   .hero-main{
     position:relative; z-index:2;
     padding:64px 0 56px;
@@ -149,7 +210,13 @@
   @media (max-width:840px){
     .hero-main{ grid-template-columns:1fr; gap:32px; }
     .hero-art{ max-width:280px; margin:0 auto; }
-    .hero-top nav{ display:none; }
+    .menu-btn{ display:inline-block; }
+    .hero-top nav{
+      display:none;
+      width:100%; flex-direction:column; gap:14px;
+      padding-top:16px; border-top:1px solid rgba(255,255,255,.12);
+    }
+    .hero-top nav.open{ display:flex; }
   }
 
   /* ---------- IDENTITY STRIP (below hero) ---------- */
@@ -470,14 +537,230 @@
     font-family:var(--mono); font-size:11px; color:var(--ink-faint);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
   }
+  footer a.top{ color:var(--ink-faint); text-decoration:none; }
+  footer a.top:hover{ color:var(--rust); }
+
+  /* ---------- ORBITAL ENVIRONMENT (Space-Track) ---------- */
+  .orbenv{
+    background:var(--cream);
+    border-bottom:1px solid var(--rule-2);
+    padding:44px 0 40px;
+  }
+  .orbenv-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:16px; flex-wrap:wrap; margin-bottom:24px;
+  }
+  .orbenv-head h2{
+    font-family:var(--display); font-weight:700; font-size:1.4rem; color:var(--navy);
+  }
+  .orbenv-src{
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+    letter-spacing:.06em; text-transform:uppercase;
+    display:flex; align-items:center; gap:8px;
+  }
+  .orbenv-src a{ color:var(--ink-soft); }
+  .orbenv-src .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--rust);
+    display:inline-block;
+  }
+  @keyframes livepulse{ 0%,100%{ opacity:1; } 50%{ opacity:.3; } }
+  .orbenv-src .dot{ animation:livepulse 2.2s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce){ .orbenv-src .dot{ animation:none; } }
+
+  .orbenv-alert{
+    border:1px solid var(--rule-2); border-left:3px solid var(--rust);
+    background:var(--paper); padding:16px 20px; margin-bottom:26px;
+  }
+  .orbenv-alert .tag{
+    font-family:var(--mono); font-size:10.5px; color:var(--rust);
+    letter-spacing:.1em; text-transform:uppercase; font-weight:500;
+    display:block; margin-bottom:6px;
+  }
+  .orbenv-alert p{ color:var(--ink-soft); font-size:.93rem; line-height:1.6; }
+
+  .orbenv-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:0;
+    border:1px solid var(--rule-2); background:var(--paper);
+  }
+  .orbenv-grid > div{
+    padding:20px 22px; border-right:1px solid var(--rule);
+  }
+  .orbenv-grid > div:last-child{ border-right:none; background:var(--navy); }
+  .orbenv-grid .num{
+    font-family:var(--display); font-size:clamp(1.6rem, 3.2vw, 2.2rem);
+    font-weight:700; color:var(--navy); line-height:1.1;
+    font-variant-numeric:tabular-nums;
+  }
+  .orbenv-grid > div:last-child .num{ color:var(--gold); }
+  .orbenv-grid .lab{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-faint);
+    letter-spacing:.08em; text-transform:uppercase; margin-top:6px;
+  }
+  .orbenv-grid > div:last-child .lab{ color:rgba(243,236,220,.7); }
+  .orbenv-note{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-faint);
+    letter-spacing:.04em; margin-top:12px;
+  }
+  @media (max-width:720px){
+    .orbenv-grid{ grid-template-columns:repeat(2, 1fr); }
+    .orbenv-grid > div{ border-bottom:1px solid var(--rule); }
+    .orbenv-grid > div:nth-child(2n){ border-right:none; }
+    .orbenv-grid > div:nth-child(n+3){ border-bottom:none; }
+  }
+  @media print{
+    .orbenv{ border-top:1px solid var(--rule); }
+    .orbenv-grid > div:last-child{ background:#fff; }
+    .orbenv-grid > div:last-child .num{ color:var(--ink); }
+    .orbenv-grid > div:last-child .lab{ color:var(--ink-faint); }
+  }
+
+  /* ---------- INTERACTIVE LAYER ---------- */
+
+  /* Scroll reveals */
+  .reveal{
+    opacity:0; transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* Sticky scrollspy nav (appears after hero) */
+  .spy{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,238,.92);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+    transform:translateY(-100%); transition:transform .3s ease;
+  }
+  .spy.show{ transform:none; }
+  .spy .wrap{
+    display:flex; gap:4px; overflow-x:auto;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
+    scrollbar-width:none;
+  }
+  .spy .wrap::-webkit-scrollbar{ display:none; }
+  .spy a{
+    color:var(--ink-faint); text-decoration:none; text-transform:uppercase;
+    padding:12px 12px; white-space:nowrap;
+    border-bottom:2px solid transparent;
+  }
+  .spy a:hover{ color:var(--ink); }
+  .spy a.current{ color:var(--rust); border-bottom-color:var(--rust); }
+  @media (prefers-reduced-motion: reduce){
+    .spy{ transition:none; }
+  }
+
+  /* Hover micro-interactions */
+  .figure{ transition:opacity .6s ease, transform .45s ease, box-shadow .25s ease; }
+  .gallery .figure:hover, .figure.zoomable:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 40px -20px rgba(33,29,23,.5);
+  }
+  .figure.zoomable img{ cursor:zoom-in; }
+  .pub-item, .award-item, .course, .press-item{ transition:background-color .2s ease; }
+  .pub-item:hover, .award-item:hover, .course:hover, .press-item:hover{
+    background:linear-gradient(90deg, transparent, rgba(193,87,47,.045) 8%, rgba(193,87,47,.045) 92%, transparent);
+  }
+  .hero-tags span{ transition:border-color .2s ease, color .2s ease, transform .2s ease; }
+  .hero-tags span:hover{
+    border-color:var(--gold); color:var(--gold); transform:translateY(-2px);
+  }
+  .pub-filter button{ transition:color .15s ease, border-color .15s ease; }
+  .pub-filter .count{ color:var(--ink-faint); margin-left:4px; }
+  .pub-filter button.active .count{ color:var(--rust); }
+  @media (prefers-reduced-motion: reduce){
+    .figure, .hero-tags span{ transition:none; }
+    .gallery .figure:hover, .figure.zoomable:hover, .hero-tags span:hover{ transform:none; }
+  }
+
+  /* Hero ambience */
+  @keyframes twinkle{
+    0%,100%{ opacity:1; } 50%{ opacity:.45; }
+  }
+  .hero::before{ animation:twinkle 5.5s ease-in-out infinite; }
+  @keyframes streak-pulse{
+    0%,100%{ opacity:1; } 50%{ opacity:.35; }
+  }
+  .hero-art .det{ animation:streak-pulse 2.4s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce){
+    .hero::before, .hero-art .det{ animation:none; }
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(24,29,42,.93);
+    display:none; align-items:center; justify-content:center;
+    padding:32px; cursor:zoom-out;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox figure{
+    max-width:min(1100px, 94vw); margin:0;
+    background:#fff; padding:10px; border:1px solid var(--rule-2);
+    cursor:default;
+  }
+  .lightbox img{
+    max-width:100%; max-height:78vh; width:auto; height:auto;
+    display:block; margin:0 auto;
+  }
+  .lightbox figcaption{
+    font-family:var(--mono); font-size:11.5px; color:var(--ink-soft);
+    letter-spacing:.04em; padding:12px 8px 4px; line-height:1.5; text-align:center;
+  }
+  .lightbox-close{
+    position:absolute; top:18px; right:22px;
+    background:none; border:1px solid rgba(243,236,220,.4); border-radius:3px;
+    color:var(--cream); font-family:var(--mono); font-size:11px;
+    letter-spacing:.1em; text-transform:uppercase; padding:8px 14px; cursor:pointer;
+  }
+  .lightbox-close:hover{ border-color:var(--gold); color:var(--gold); }
+
+  /* Floating back-to-top */
+  .fab-top{
+    position:fixed; right:22px; bottom:22px; z-index:60;
+    width:42px; height:42px; border-radius:3px;
+    background:var(--navy); color:var(--cream);
+    border:1px solid rgba(243,236,220,.25);
+    font-size:17px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transform:translateY(8px);
+    transition:opacity .25s ease, transform .25s ease;
+    box-shadow:0 10px 24px -12px rgba(31,44,68,.6);
+  }
+  .fab-top.show{ opacity:1; pointer-events:auto; transform:none; }
+  .fab-top:hover{ color:var(--gold); border-color:var(--gold); }
+  @media (prefers-reduced-motion: reduce){ .fab-top{ transition:none; } }
+  @media print{ .fab-top, .spy, .lightbox{ display:none !important; } }
+
+  /* ---------- PRINT (page doubles as a CV) ---------- */
+  @media print{
+    body{ background:#fff; font-size:11pt; }
+    .hero, #contact{ background:#fff !important; color:var(--ink) !important; }
+    .hero::before, .hero-art, .menu-btn, .hero-top nav, .pub-filter, footer a.top{ display:none !important; }
+    .hero-main h1, .hero-main h1 em, #contact .sec-title{ color:var(--ink) !important; }
+    .hero-main .lede, #contact .sec-intro, .contact-list a{ color:var(--ink-soft) !important; }
+    .hero-tags span{ border-color:var(--rule-2); color:var(--ink-soft); }
+    .foci{ background:#fff; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+    .foci .wrap > div, .foci p{ color:var(--ink-soft) !important; }
+    .foci h3{ color:var(--rust) !important; }
+    section{ break-inside:avoid-page; }
+    .pub-item, .post, .award-item, .course{ break-inside:avoid; }
+    .figure, .gallery{ display:none; }
+    a{ color:var(--ink); text-decoration:none; }
+  }
 </style>
 </head>
 <body>
 
-<header class="hero">
+<a class="skip-link" href="#about">Skip to content</a>
+
+<header class="hero" id="top">
   <div class="wrap hero-top">
     <div class="hero-mark">V. Suthakar — Earth &amp; Space Science, York University</div>
-    <nav>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#publications">Publications</a>
@@ -506,22 +789,36 @@
       </div>
     </div>
     <div class="hero-art">
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of an elliptical orbital track around Earth with a detected object streak">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated illustration of a satellite tracking along an elliptical orbit around Earth, with a detected object streak">
         <circle cx="200" cy="200" r="46" fill="#2d3f5e" stroke="#d6a341" stroke-width="1.5" opacity="0.9"/>
         <ellipse cx="200" cy="200" rx="160" ry="90" fill="none" stroke="rgba(243,236,220,.35)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(-18 200 200)"/>
         <ellipse cx="200" cy="200" rx="120" ry="155" fill="none" stroke="rgba(243,236,220,.2)" stroke-width="1" stroke-dasharray="2 6" transform="rotate(35 200 200)"/>
+        <!-- satellite tracking along the primary orbit -->
+        <g transform="rotate(-18 200 200)">
+          <g>
+            <circle r="4" fill="#d6a341"/>
+            <circle r="8" fill="none" stroke="#d6a341" stroke-width="1" opacity="0.45">
+              <animate attributeName="r" values="6;11;6" dur="2.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values=".5;.08;.5" dur="2.6s" repeatCount="indefinite"/>
+            </circle>
+            <animateMotion dur="26s" repeatCount="indefinite" rotate="auto"
+              path="M 40,200 a 160,90 0 1,0 320,0 a 160,90 0 1,0 -320,0"/>
+          </g>
+        </g>
         <!-- detection streak -->
-        <line x1="58" y1="118" x2="98" y2="138" stroke="#c1572f" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="100" cy="139" r="3.5" fill="#c1572f"/>
-        <!-- bounding box around detection -->
-        <rect x="44" y="106" width="68" height="46" fill="none" stroke="#d6a341" stroke-width="1" stroke-dasharray="3 3" opacity="0.8"/>
+        <g class="det">
+          <line x1="58" y1="118" x2="98" y2="138" stroke="#c1572f" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="100" cy="139" r="3.5" fill="#c1572f"/>
+          <!-- bounding box around detection -->
+          <rect x="44" y="106" width="68" height="46" fill="none" stroke="#d6a341" stroke-width="1" stroke-dasharray="3 3" opacity="0.8"/>
+          <text x="100" y="100" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d6a341" letter-spacing="1">RSO-0114</text>
+        </g>
         <!-- distant objects -->
         <circle cx="320" cy="280" r="3" fill="#f3ecdc" opacity="0.7"/>
         <circle cx="280" cy="90" r="2.5" fill="#f3ecdc" opacity="0.6"/>
         <circle cx="340" cy="160" r="2" fill="#f3ecdc" opacity="0.5"/>
         <circle cx="120" cy="320" r="2.5" fill="#f3ecdc" opacity="0.6"/>
         <!-- labels -->
-        <text x="100" y="100" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d6a341" letter-spacing="1">RSO-0114</text>
         <text x="200" y="206" font-family="IBM Plex Mono, monospace" font-size="9" fill="#f3ecdc" text-anchor="middle" letter-spacing="1" opacity="0.8">EARTH</text>
       </svg>
     </div>
@@ -548,6 +845,18 @@
     </dl>
   </div>
 </div>
+
+<nav class="spy" id="spy" aria-label="Section navigation">
+  <div class="wrap">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#publications">Publications</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#outreach">Outreach</a>
+    <a href="#awards">Awards</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
 <main>
 <div class="wrap">
@@ -581,7 +890,7 @@
         </div>
         <div>
           <div class="portrait">
-            <img src="assets/photo.png" alt="Portrait of Vithurshan Suthakar">
+            <img decoding="async" width="499" height="447" src="assets/photo.png" alt="Portrait of Vithurshan Suthakar">
           </div>
           <div class="portrait-cap">Toronto, Ontario</div>
         </div>
@@ -614,6 +923,45 @@
       </div>
     </div>
   </div>
+
+  <!-- ORBITAL ENVIRONMENT (data: Space-Track.org, refreshed by GitHub Action) -->
+  <div class="orbenv" id="orbenv">
+    <div class="wrap">
+      <div class="orbenv-head">
+        <h2>The orbital environment today</h2>
+        <span class="orbenv-src"><span class="dot" aria-hidden="true"></span>
+          Source: <a href="https://www.space-track.org" target="_blank" rel="noopener">Space-Track.org</a>
+          &nbsp;·&nbsp; updated <span id="st-date">2026-06-13</span>
+        </span>
+      </div>
+
+      <div class="orbenv-alert" id="st-alert">
+        <span class="tag">Latest Space-Track advisory</span>
+        <p id="st-alert-text">U.S. Space Forces – Space (S4S) has confirmed the breakup of a Chinese Zhuque-2E rocket body launched from the Jiuquan Satellite Launch Center, China, on 9 June 2026, likely at 0847 UTC. Tracked pieces are being incorporated into routine conjunction assessment to support spaceflight safety; there are currently no threats to human spaceflight and analysis is ongoing.</p>
+      </div>
+
+      <div class="orbenv-grid">
+        <div>
+          <div class="num st-num" data-key="active_payloads">12,100</div>
+          <div class="lab">Active payloads</div>
+        </div>
+        <div>
+          <div class="num st-num" data-key="analyst_objects">16,700</div>
+          <div class="lab">Analyst objects</div>
+        </div>
+        <div>
+          <div class="num st-num" data-key="debris">22,000</div>
+          <div class="lab">Tracked debris</div>
+        </div>
+        <div>
+          <div class="num st-num" data-key="total">50,800</div>
+          <div class="lab">Objects tracked in orbit</div>
+        </div>
+      </div>
+      <p class="orbenv-note">Approximate counts from the U.S. Space Force public catalogue — the population my detection and tracking research aims to help monitor.</p>
+    </div>
+  </div>
+
   <div class="wrap">
 
 
@@ -1035,7 +1383,7 @@
     </div>
 
     <figure class="figure">
-      <img src="assets/signatures.jpg" alt="A dense grid of handwritten notes, drawings, and signatures submitted by Ontario Science Centre visitors for a near-space payload">
+      <img loading="lazy" decoding="async" width="2000" height="2077" src="assets/signatures.jpg" alt="A dense grid of handwritten notes, drawings, and signatures submitted by Ontario Science Centre visitors for a near-space payload">
       <figcaption>
         Messages collected from visitors during "Satellites &amp; You" at the Ontario Science Centre —
         written for engraving onto a near-space payload as part of one of Professor Lee's nanosatellite missions.
@@ -1044,23 +1392,23 @@
 
     <div class="gallery">
       <figure class="figure">
-        <img src="assets/feedback-session.jpg" alt="Leading a feedback session with attendees after the theatre-level Satellites and You presentation">
+        <img loading="lazy" decoding="async" width="1600" height="1200" src="assets/feedback-session.jpg" alt="Leading a feedback session with attendees after the theatre-level Satellites and You presentation">
         <figcaption>Leading the post-presentation feedback session at the Ontario Science Centre, 2023.</figcaption>
       </figure>
       <figure class="figure">
-        <img src="assets/satellites-and-us.jpg" alt="Audience members holding satellite models on stage during the Satellites and Us presentation, with an orbit visualization projected behind">
+        <img loading="lazy" decoding="async" width="1600" height="1205" src="assets/satellites-and-us.jpg" alt="Audience members holding satellite models on stage during the Satellites and Us presentation, with an orbit visualization projected behind">
         <figcaption>"Satellites &amp; Us" presentation, Ontario Science Centre — engaging the audience with satellite models and orbit visualizations.</figcaption>
       </figure>
       <figure class="figure">
-        <img src="assets/timmins-campers.webp" alt="Presenting the NIMBUS-3 stratospheric balloon payload and debris-tracking experiment to summer campers at the Canadian Space Agency base in Timmins">
+        <img loading="lazy" decoding="async" width="564" height="423" src="assets/timmins-campers.webp" alt="Presenting the NIMBUS-3 stratospheric balloon payload and debris-tracking experiment to summer campers at the Canadian Space Agency base in Timmins">
         <figcaption>Explaining the NIMBUS-3 debris-tracking payload to Science Timmins summer campers at the CSA base, Timmins.</figcaption>
       </figure>
       <figure class="figure">
-        <img src="assets/mcintosh-mural.jpg" alt="Installing an interactive constellation mural with embedded circuit boards for the McIntosh Gallery exhibit at Western University">
+        <img loading="lazy" decoding="async" width="1600" height="1205" src="assets/mcintosh-mural.jpg" alt="Installing an interactive constellation mural with embedded circuit boards for the McIntosh Gallery exhibit at Western University">
         <figcaption>Installing the interactive constellation mural for "The Life Cycle of Celestial Objects," McIntosh Gallery, Western University.</figcaption>
       </figure>
       <figure class="figure">
-        <img src="assets/science-centre-revisit.jpg" alt="Returning to the Ontario Science Centre to display the flown payload alongside the engraved message plate for visiting children">
+        <img loading="lazy" decoding="async" width="1600" height="1205" src="assets/science-centre-revisit.jpg" alt="Returning to the Ontario Science Centre to display the flown payload alongside the engraved message plate for visiting children">
         <figcaption>Revisiting the Ontario Science Centre to display the flown payload and engraved message plate.</figcaption>
       </figure>
     </div>
@@ -1198,22 +1546,226 @@
 <footer class="wrap">
   <span>Vithurshan Suthakar — Earth &amp; Space Science, York University</span>
   <span>Toronto, Canada</span>
+  <a class="top" href="#top">Back to top ↑</a>
 </footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo">
+  <button class="lightbox-close" id="lightbox-close">Close ✕</button>
+  <figure>
+    <img id="lightbox-img" src="" alt="">
+    <figcaption id="lightbox-cap"></figcaption>
+  </figure>
+</div>
+
+<button class="fab-top" id="fab-top" aria-label="Back to top">↑</button>
 
 <script>
   (function(){
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- Publication filter (with live counts) ---- */
     const buttons = document.querySelectorAll('.pub-filter button');
     const items = document.querySelectorAll('.pub-item');
     buttons.forEach(btn=>{
+      const f = btn.dataset.filter;
+      const n = (f==='all') ? items.length
+        : document.querySelectorAll('.pub-item[data-type="'+f+'"]').length;
+      const c = document.createElement('span');
+      c.className = 'count'; c.textContent = '('+n+')';
+      btn.appendChild(c);
+      btn.setAttribute('aria-pressed', btn.classList.contains('active'));
       btn.addEventListener('click', ()=>{
-        buttons.forEach(b=>b.classList.remove('active'));
+        buttons.forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
         btn.classList.add('active');
-        const f = btn.dataset.filter;
+        btn.setAttribute('aria-pressed','true');
         items.forEach(item=>{
           item.style.display = (f==='all' || item.dataset.type===f) ? '' : 'none';
         });
       });
     });
+
+    /* ---- Mobile menu ---- */
+    const menuBtn = document.getElementById('menu-btn');
+    const nav = document.getElementById('site-nav');
+    if(menuBtn && nav){
+      menuBtn.addEventListener('click', ()=>{
+        const open = nav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.textContent = open ? 'Close' : 'Menu';
+      });
+      nav.querySelectorAll('a').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          nav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.textContent = 'Menu';
+        });
+      });
+    }
+
+    /* ---- Scroll reveals ---- */
+    const revealTargets = document.querySelectorAll(
+      'section .post, section .pub-item, section .course, section .feature-block, ' +
+      'section .award-item, section .press-item, .figure, .foci .wrap > div'
+    );
+    revealTargets.forEach(el=>el.classList.add('reveal'));
+    if('IntersectionObserver' in window && !reduceMotion){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin:'0px 0px -8% 0px', threshold:0.05 });
+      revealTargets.forEach(el=>io.observe(el));
+    } else {
+      revealTargets.forEach(el=>el.classList.add('in'));
+    }
+
+    /* ---- Sticky scrollspy nav ---- */
+    const spy = document.getElementById('spy');
+    const spyLinks = spy ? Array.from(spy.querySelectorAll('a')) : [];
+    const sections = spyLinks
+      .map(a=>document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+    const hero = document.querySelector('.hero');
+
+    function setCurrent(){
+      const y = window.scrollY;
+      if(spy && hero){ spy.classList.toggle('show', y > hero.offsetHeight); }
+      let active = null;
+      sections.forEach(sec=>{
+        if(sec.getBoundingClientRect().top <= 110) active = sec.id;
+      });
+      spyLinks.forEach(a=>{
+        a.classList.toggle('current', a.getAttribute('href') === '#'+active);
+      });
+      const fab = document.getElementById('fab-top');
+      if(fab) fab.classList.toggle('show', y > 900);
+    }
+    window.addEventListener('scroll', setCurrent, { passive:true });
+    setCurrent();
+
+    const fab = document.getElementById('fab-top');
+    if(fab) fab.addEventListener('click', ()=>{
+      window.scrollTo({ top:0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    /* ---- Stat counter (numeric stats only) ---- */
+    const stats = document.querySelectorAll('.feature-block .stat');
+    stats.forEach(el=>{
+      const raw = el.textContent.trim();
+      const m = raw.match(/^([\d,]+)(\+?)$/);
+      if(!m || reduceMotion) return;
+      const target = parseInt(m[1].replace(/,/g,''),10);
+      const suffix = m[2];
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(!e.isIntersecting) return;
+          io.disconnect();
+          const t0 = performance.now(), dur = 1400;
+          (function tick(t){
+            const p = Math.min((t - t0)/dur, 1);
+            const eased = 1 - Math.pow(1-p, 3);
+            el.textContent = Math.round(target*eased).toLocaleString('en-CA') + (p===1 ? suffix : '');
+            if(p < 1) requestAnimationFrame(tick);
+          })(t0);
+        });
+      }, { threshold:0.4 });
+      io.observe(el);
+    });
+
+    /* ---- Lightbox for photos ---- */
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-cap');
+    const lbClose = document.getElementById('lightbox-close');
+    let lastFocus = null;
+
+    document.querySelectorAll('.figure').forEach(fig=>{
+      const img = fig.querySelector('img');
+      if(!img) return;
+      fig.classList.add('zoomable');
+      img.setAttribute('tabindex','0');
+      img.setAttribute('role','button');
+      img.setAttribute('aria-label','Enlarge photo');
+      const open = ()=>{
+        lastFocus = document.activeElement;
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        const cap = fig.querySelector('figcaption');
+        lbCap.textContent = cap ? cap.textContent.trim() : '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      };
+      img.addEventListener('click', open);
+      img.addEventListener('keydown', e=>{
+        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); open(); }
+      });
+    });
+    function closeLb(){
+      lb.classList.remove('open');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+      if(lastFocus) lastFocus.focus();
+    }
+    if(lb){
+      lbClose.addEventListener('click', closeLb);
+      lb.addEventListener('click', e=>{ if(e.target === lb) closeLb(); });
+      document.addEventListener('keydown', e=>{
+        if(e.key==='Escape' && lb.classList.contains('open')) closeLb();
+      });
+    }
+
+    /* ---- Space-Track scoreboard (data/spacetrack.json, refreshed by GitHub Action) ---- */
+    function animateNum(el, target){
+      if(reduceMotion || !('IntersectionObserver' in window)){
+        el.textContent = target.toLocaleString('en-CA'); return;
+      }
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(!e.isIntersecting) return;
+          io.disconnect();
+          const t0 = performance.now(), dur = 1200;
+          (function tick(t){
+            const p = Math.min((t - t0)/dur, 1);
+            const eased = 1 - Math.pow(1-p, 3);
+            el.textContent = Math.round(target*eased).toLocaleString('en-CA');
+            if(p < 1) requestAnimationFrame(tick);
+          })(t0);
+        });
+      }, { threshold:0.4 });
+      io.observe(el);
+    }
+
+    const stNums = document.querySelectorAll('.st-num');
+    // Animate the baked-in fallback values regardless
+    stNums.forEach(el=>{
+      const v = parseInt(el.textContent.replace(/[^\d]/g,''),10);
+      if(!isNaN(v)) animateNum(el, v);
+    });
+    // Then try to refresh from the JSON the Action keeps current
+    fetch('data/spacetrack.json', { cache:'no-store' })
+      .then(r=>{ if(!r.ok) throw 0; return r.json(); })
+      .then(d=>{
+        if(d.updated){ const el=document.getElementById('st-date'); if(el) el.textContent=d.updated; }
+        if(d.alert){
+          const t=document.getElementById('st-alert-text'); if(t) t.textContent=d.alert;
+        } else {
+          const a=document.getElementById('st-alert'); if(a) a.style.display='none';
+        }
+        if(d.scoreboard){
+          stNums.forEach(el=>{
+            const v = d.scoreboard[el.dataset.key];
+            if(typeof v === 'number') el.textContent = v.toLocaleString('en-CA');
+          });
+        }
+      })
+      .catch(()=>{ /* keep baked-in values (e.g. local preview) */ });
+
+    /* ---- Pause SVG orbit animation if reduced motion ---- */
+    if(reduceMotion){
+      const svg = document.querySelector('.hero-art svg');
+      if(svg && svg.pauseAnimations) svg.pauseAnimations();
+    }
   })();
 </script>
 
