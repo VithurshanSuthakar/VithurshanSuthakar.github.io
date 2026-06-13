@@ -55,3 +55,11 @@ The "orbital environment" strip on the homepage reads from `data/spacetrack.json
 - `scripts/fetch_spacetrack.py` does the scraping; if Space-Track changes their page layout, the script fails safely and the site keeps showing the last good snapshot (dated by the "updated" stamp on the page).
 - One-time setup after pushing: **Settings → Actions → General → Workflow permissions → Read and write permissions**, so the workflow can commit the refreshed JSON.
 - Data is attributed and linked on the page. Worth skimming Space-Track's user agreement once to confirm you're comfortable mirroring the public scoreboard/advisory; the script identifies itself and touches one public page once a day.
+
+## Live SSA section
+
+Section II renders three in-browser demonstrations:
+
+- **Live ground tracks** — `data/tles.json` (refreshed daily by the same workflow, from CelesTrak) propagated client-side with SGP4 via a vendored copy of [satellite.js](https://github.com/shashwatak/satellite-js) v5 (`assets/vendor/satellite.min.js`, MIT). The seed file ships with stations/payloads; the first workflow run adds ENVISAT, a Starlink, Fengyun-1C and Cosmos-2251 debris pieces, and an SL-16 rocket body. To change the object set, edit `TARGETS` in `scripts/fetch_tles.py`.
+- **Streak-detection demo** — pure canvas simulation, no data dependencies.
+- **Population timeline** — approximate historical counts hard-coded in `index.html` (search `POPULATION TIMELINE`); update the 2026 endpoint if the scoreboard moves significantly.

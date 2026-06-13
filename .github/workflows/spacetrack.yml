@@ -1,4 +1,4 @@
-name: Refresh Space-Track scoreboard
+name: Refresh orbital data (scoreboard + TLEs)
 
 on:
   schedule:
@@ -24,13 +24,16 @@ jobs:
       - name: Fetch scoreboard and advisory
         run: python scripts/fetch_spacetrack.py
 
+      - name: Fetch TLEs from CelesTrak
+        run: python scripts/fetch_tles.py
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- data/spacetrack.json; then
-            git add data/spacetrack.json
-            git commit -m "data: refresh Space-Track scoreboard ($(date -u +%F))"
+          if ! git diff --quiet -- data/; then
+            git add data/
+            git commit -m "data: refresh scoreboard + TLEs ($(date -u +%F))"
             git push
           else
             echo "No change in scoreboard data."
