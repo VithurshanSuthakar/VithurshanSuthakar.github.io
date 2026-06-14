@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # opt into Node.js 24 ahead of deadline
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -21,7 +24,10 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4
 
-      - name: Fetch scoreboard and advisory
+      - name: Fetch scoreboard from Space-Track API
+        env:
+          SPACETRACK_USER: ${{ secrets.SPACETRACK_USER }}
+          SPACETRACK_PASS: ${{ secrets.SPACETRACK_PASS }}
         run: python scripts/fetch_spacetrack.py
 
       - name: Fetch TLEs from CelesTrak
