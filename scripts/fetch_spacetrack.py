@@ -2,11 +2,22 @@
 """Refresh data/spacetrack.json from the Space-Track.org authenticated API.
 
 Authenticates with Space-Track using credentials passed via environment
-variables SPACETRACK_USER and SPACETRACK_PASS (set as GitHub Actions secrets).
-Fetches the boxscore endpoint which returns object counts by category.
+variables SPACETRACK_USER and SPACETRACK_PASS (set as GitHub Actions secrets),
+then queries the `boxscore` class, which returns object counts by country.
+The single COUNTRY="ALL" row holds the global totals shown on the public
+Space Scoreboard.
 
-If the fetch or parse fails the script exits non-zero WITHOUT touching the
-existing JSON, so the site keeps showing the last good snapshot.
+The four figures published on the site mirror the public scoreboard:
+    active_payloads = ORBITAL_PAYLOAD_COUNT
+    debris          = ORBITAL_DEBRIS_COUNT
+    total           = ORBITAL_TOTAL_COUNT
+    analyst_objects = total - payloads - debris   (matches the public page's
+                      "Analyst Objects", which folds in rocket bodies etc.)
+
+Failure policy: if anything goes wrong (missing creds, network/auth error,
+unexpected response), the script logs the reason and exits 0 WITHOUT touching
+the existing JSON, so the workflow stays green and the site keeps showing the
+last good snapshot. Set STRICT=1 in the environment to exit non-zero instead.
 
 Run on a schedule by .github/workflows/spacetrack.yml.
 """
@@ -22,91 +33,99 @@ import sys
 import requests
 
 LOGIN_URL = "https://www.space-track.org/ajaxauth/login"
-BOXSCORE_URL = "https://www.space-track.org/basicspacedata/query/class/boxscore/format/json"
+BOXSCORE_URL = (
+    "https://www.space-track.org/basicspacedata/query/class/boxscore/format/json"
+)
 OUT = pathlib.Path(__file__).resolve().parent.parent / "data" / "spacetrack.json"
 UA = {"User-Agent": "personal-site-scoreboard (github.io; contact: Vithurs@my.yorku.ca)"}
 
-# Map Space-Track boxscore field names -> our JSON keys
-# The boxscore returns one row per country; we sum across all rows.
-FIELD_MAP = {
-    "PAYLOAD_COUNT":        "active_payloads",
-    "ROCKET_BODY_COUNT":    "rocket_bodies",
-    "DEBRIS_COUNT":         "debris",
-    "TOTAL_COUNT":          "total",
-}
+STRICT = os.environ.get("STRICT", "").strip() not in ("", "0", "false", "False")
 
 
-def get_credentials() -> tuple[str, str]:
-    user = os.environ.get("SPACETRACK_USER", "").strip()
-    pwd  = os.environ.get("SPACETRACK_PASS", "").strip()
-    if not user or not pwd:
-        print(
-            "ERROR: SPACETRACK_USER and SPACETRACK_PASS must be set as environment variables.",
-            file=sys.stderr,
-        )
-        sys.exit(1)
-    return user, pwd
+def skip(reason: str) -> int:
+    """Log why we're skipping and keep the existing data file untouched."""
+    print(f"SKIP: {reason}", file=sys.stderr)
+    print("Keeping existing data/spacetrack.json (last good snapshot).")
+    return 1 if STRICT else 0
 
 
-def fetch_boxscore(session: requests.Session) -> list[dict]:
-    resp = session.get(BOXSCORE_URL, headers=UA, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-    if not isinstance(data, list) or len(data) == 0:
-        raise ValueError(f"Unexpected boxscore response: {resp.text[:300]}")
-    return data
+def to_int(value) -> int:
+    try:
+        return int(str(value).strip())
+    except (ValueError, TypeError, AttributeError):
+        return 0
 
 
-def sum_counts(rows: list[dict]) -> dict[str, int]:
-    """Sum numeric fields across all country rows."""
-    totals: dict[str, int] = {v: 0 for v in FIELD_MAP.values()}
-    for row in rows:
-        for src_key, dst_key in FIELD_MAP.items():
-            val = row.get(src_key)
-            if val is not None:
-                try:
-                    totals[dst_key] += int(val)
-                except (ValueError, TypeError):
-                    pass
-    return totals
+def _existing_alert():
+    """Return the alert already stored in the JSON, if any (API has no banner)."""
+    try:
+        return json.loads(OUT.read_text()).get("alert")
+    except Exception:
+        return None
 
 
 def main() -> int:
-    user, pwd = get_credentials()
+    user = os.environ.get("SPACETRACK_USER", "").strip()
+    pwd = os.environ.get("SPACETRACK_PASS", "").strip()
+    if not user or not pwd:
+        return skip("SPACETRACK_USER / SPACETRACK_PASS not set in environment.")
 
-    with requests.Session() as session:
-        # Authenticate
-        login_resp = session.post(
-            LOGIN_URL,
-            data={"identity": user, "password": pwd},
-            headers=UA,
-            timeout=30,
-        )
-        login_resp.raise_for_status()
-        if "login" in login_resp.url.lower() or '"Login"' in login_resp.text:
-            print("ERROR: Space-Track login failed — check credentials.", file=sys.stderr)
-            return 1
+    try:
+        with requests.Session() as session:
+            session.headers.update(UA)
 
-        # Fetch boxscore
-        try:
-            rows = fetch_boxscore(session)
-        except Exception as exc:
-            print(f"ERROR: boxscore fetch failed: {exc}", file=sys.stderr)
-            return 1
+            # Authenticate. A failed login returns HTTP 200 with {"Login": "Failed"}.
+            login = session.post(
+                LOGIN_URL,
+                data={"identity": user, "password": pwd},
+                timeout=30,
+            )
+            login.raise_for_status()
+            try:
+                body = login.json()
+                if isinstance(body, dict) and body.get("Login") == "Failed":
+                    return skip("Space-Track rejected the credentials (Login: Failed).")
+            except ValueError:
+                pass  # a successful login may return a non-JSON body; that's fine
 
-    counts = sum_counts(rows)
+            # Query the boxscore.
+            resp = session.get(BOXSCORE_URL, timeout=30)
+            resp.raise_for_status()
+            rows = resp.json()
+    except requests.RequestException as exc:
+        return skip(f"network/HTTP error talking to Space-Track: {exc}")
+    except ValueError as exc:
+        return skip(f"could not parse boxscore JSON: {exc}")
 
-    # Sanity check — all keys must be present and non-zero
-    missing = [k for k, v in counts.items() if v == 0]
-    if missing:
-        print(f"ERROR: zero counts for {missing} — parse may have failed.", file=sys.stderr)
-        print(f"Raw first row: {rows[0]}", file=sys.stderr)
-        return 1
+    if not isinstance(rows, list) or not rows:
+        return skip(f"unexpected boxscore response: {str(rows)[:200]}")
+
+    all_row = next(
+        (r for r in rows if str(r.get("COUNTRY", "")).strip().upper() == "ALL"),
+        None,
+    )
+    if all_row is None:
+        return skip("boxscore had no COUNTRY=ALL summary row.")
+
+    payloads = to_int(all_row.get("ORBITAL_PAYLOAD_COUNT"))
+    debris = to_int(all_row.get("ORBITAL_DEBRIS_COUNT"))
+    total = to_int(all_row.get("ORBITAL_TOTAL_COUNT"))
+    analyst = max(total - payloads - debris, 0)
+
+    if total == 0 or payloads == 0:
+        return skip(f"boxscore parsed to zero counts; raw ALL row: {all_row}")
 
     payload = {
         "updated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d"),
-        "scoreboard": counts,
-        "alert": None,   # alert banners require scraping; omitted in API mode
+        "scoreboard": {
+            "active_payloads": payloads,
+            "analyst_objects": analyst,
+            "debris": debris,
+            "total": total,
+        },
+        # The advisory banner lives only on the public HTML page, not the API;
+        # preserve any previously captured alert rather than blanking it.
+        "alert": _existing_alert(),
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)

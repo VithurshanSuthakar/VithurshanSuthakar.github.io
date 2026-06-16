@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import pathlib
 import sys
 import time
@@ -86,9 +87,10 @@ def main() -> int:
                 objects.append(stale)
         time.sleep(2)  # be polite to CelesTrak
 
+    strict = os.environ.get("STRICT", "").strip() not in ("", "0", "false", "False")
     if len(objects) < 4:
-        print("ERROR: too few objects fetched; keeping existing file.", file=sys.stderr)
-        return 1
+        print("SKIP: too few objects fetched; keeping existing data/tles.json.", file=sys.stderr)
+        return 1 if strict else 0
 
     payload = {
         "updated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d"),

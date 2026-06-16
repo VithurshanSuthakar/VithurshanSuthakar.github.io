@@ -8,16 +8,13 @@ on:
 permissions:
   contents: write
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # opt into Node.js 24 ahead of deadline
-
 jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -42,5 +39,5 @@ jobs:
             git commit -m "data: refresh scoreboard + TLEs ($(date -u +%F))"
             git push
           else
-            echo "No change in scoreboard data."
+            echo "No change in orbital data."
           fi

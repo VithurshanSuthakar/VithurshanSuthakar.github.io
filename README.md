@@ -49,12 +49,12 @@ Everything lives in `index.html`:
 
 ## Live Space-Track scoreboard
 
-The "orbital environment" strip on the homepage reads from `data/spacetrack.json` — counts and the latest advisory mirrored from the **public** [Space-Track.org](https://www.space-track.org) login page (no credentials involved).
+The "orbital environment" strip reads from `data/spacetrack.json`, refreshed daily from the **Space-Track.org authenticated API** (the `boxscore` class, whose `COUNTRY=ALL` row holds the global totals shown on the public scoreboard).
 
-- `.github/workflows/spacetrack.yml` refreshes the JSON daily at 06:17 UTC (and on demand via **Actions → Refresh Space-Track scoreboard → Run workflow**).
-- `scripts/fetch_spacetrack.py` does the scraping; if Space-Track changes their page layout, the script fails safely and the site keeps showing the last good snapshot (dated by the "updated" stamp on the page).
-- One-time setup after pushing: **Settings → Actions → General → Workflow permissions → Read and write permissions**, so the workflow can commit the refreshed JSON.
-- Data is attributed and linked on the page. Worth skimming Space-Track's user agreement once to confirm you're comfortable mirroring the public scoreboard/advisory; the script identifies itself and touches one public page once a day.
+- Credentials live in two repository secrets, **`SPACETRACK_USER`** and **`SPACETRACK_PASS`** (Settings → Secrets and variables → Actions). The workflow passes them to `scripts/fetch_spacetrack.py` as environment variables; they never appear in the committed files.
+- The four published figures map from the API as: `active_payloads = ORBITAL_PAYLOAD_COUNT`, `debris = ORBITAL_DEBRIS_COUNT`, `total = ORBITAL_TOTAL_COUNT`, and `analyst_objects = total − payloads − debris` (matching the public page's "Analyst Objects").
+- **Failure is non-fatal by design.** If credentials are missing/rejected or Space-Track is unreachable, the script logs the reason, leaves the existing JSON untouched, and exits 0 — so the workflow stays green and the site keeps showing the last good snapshot. Run with `STRICT=1` locally if you want a hard failure while debugging: `STRICT=1 python scripts/fetch_spacetrack.py`.
+- The red advisory banner is only on the public HTML page (not the API), so the API path preserves whatever `alert` is already in the JSON rather than overwriting it. Edit `data/spacetrack.json` by hand to update the banner text.
 
 ## Live SSA section
 
