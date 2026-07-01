@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="DUST: An On-Orbit Star Tracker Benchmark for Resident Space Object Detection and Attitude Estimation">
+  <meta name="description" content="Project page for DUST, a public on-orbit star-tracker-class benchmark for RSO detection, tracking, and attitude estimation using CASSIOPE/FAI imagery.">
+  <meta name="keywords" content="DUST dataset, star tracker, resident space object detection, space situational awareness, attitude estimation, CASSIOPE, Fast Auroral Imager, benchmark">
+  <meta name="author" content="Vithurshan Suthakar, Perushan Kunalakantha, Regina S. K. Lee, Gunho Sohn">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="theme-color" content="#1f4e79">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DUST Dataset">
+  <meta property="og:title" content="DUST: An On-Orbit Star Tracker Benchmark for RSO Detection and Attitude Estimation">
+  <meta property="og:description" content="A public on-orbit star-tracker-class benchmark with FAI/CASSIOPE imagery, RSO annotations, astrometrically calibrated stars, spacecraft metadata, and validation metrics.">
+  <meta property="og:image" content="static/images/teaser.png">
+  <meta property="og:image:alt" content="Annotated DUST observation sessions with RSO tracks over star trails">
+
+  <meta name="citation_title" content="An On-Orbit Star Tracker Benchmark for Resident Space Object Detection and Attitude Estimation">
+  <meta name="citation_author" content="Suthakar, Vithurshan">
+  <meta name="citation_author" content="Kunalakantha, Perushan">
+  <meta name="citation_author" content="Lee, Regina S. K.">
+  <meta name="citation_author" content="Sohn, Gunho">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_doi" content="10.1038/s41597-026-07736-9">
+
+  <title>DUST | On-Orbit Star Tracker Benchmark</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/dust-overrides.css">
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "An On-Orbit Star Tracker Benchmark for Resident Space Object Detection and Attitude Estimation",
+    "description": "DUST is a public on-orbit, wide-field, star-tracker-class benchmark for resident space object detection, multi-object tracking, and attitude estimation from CASSIOPE Fast Auroral Imager data.",
+    "author": [
+      {"@type":"Person","name":"Vithurshan Suthakar"},
+      {"@type":"Person","name":"Perushan Kunalakantha"},
+      {"@type":"Person","name":"Regina S. K. Lee"},
+      {"@type":"Person","name":"Gunho Sohn"}
+    ],
+    "datePublished": "2026",
+    "isAccessibleForFree": true,
+    "identifier": "https://doi.org/10.1038/s41597-026-07736-9",
+    "image": "static/images/teaser.png",
+    "keywords": ["resident space object detection", "star tracker", "space situational awareness", "attitude estimation", "CASSIOPE", "FAI"]
+  }
+  </script>
+</head>
+<body>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <p class="section-kicker">DUST Dataset</p>
+              <h1 class="title is-1 publication-title">An On-Orbit Star Tracker Benchmark for Resident Space Object Detection and Attitude Estimation</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><strong>Vithurshan Suthakar</strong><sup>1</sup>,</span>
+                <span class="author-block">Perushan Kunalakantha<sup>1</sup>,</span>
+                <span class="author-block">Regina S. K. Lee<sup>1</sup>,</span>
+                <span class="author-block">Gunho Sohn<sup>1</sup></span>
+              </div>
+              <div class="is-size-6 publication-authors">
+                <span class="author-block"><sup>1</sup>Department of Earth and Space Science, York University, Toronto, Canada</span>
+              </div>
+              <div class="publication-venue">Scientific Data, Article in Press, 2026</div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://doi.org/10.1038/s41597-026-07736-9" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded" style="background:#b31b1b;color:#fff;border-color:#b31b1b;">
+                      <span class="icon"><i class="fas fa-file-alt"></i></span>
+                      <span>Paper DOI</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="static/pdf/dust-scientific-data-2026.pdf" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-light">
+                      <span class="icon"><i class="fas fa-download"></i></span>
+                      <span>PDF</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://doi.org/10.5281/zenodo.20255672" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded" style="background:#ff9d00;color:#1a1a1a;border-color:#ff9d00;">
+                      <span class="icon"><i class="fas fa-database"></i></span>
+                      <span>Dataset</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://github.com/vithurshansuthakar/DUST" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#citation" class="external-link button is-normal is-rounded is-info">
+                      <span class="icon"><i class="fas fa-quote-right"></i></span>
+                      <span>Citation</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <figure class="image publication-banner">
+            <img src="static/images/teaser.png" alt="Annotated DUST observations showing star trails and RSO tracks" loading="eager">
+          </figure>
+          <h2 class="subtitle has-text-centered" style="margin-top:1.5rem;">
+            DUST provides real on-orbit, star-tracker-class imagery for benchmarking RSO detection, multi-object tracking, and attitude estimation under dense star fields, stray light, lens flare, motion jitter, and tiny-object conditions.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="abstract">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <p class="section-kicker">Abstract</p>
+            <h2 class="title is-3">On-orbit benchmark for SSA and navigation</h2>
+            <div class="content has-text-justified">
+              <p>
+                Space situational awareness increasingly relies on optical observations to detect and track resident space objects and estimate spacecraft attitude. DUST addresses the shortage of public, real, on-orbit, wide-field star-tracker-class datasets by providing near-infrared imagery from the Fast Auroral Imager aboard CASSIOPE. The dataset includes astrometrically calibrated stars, manually verified RSO annotations, spacecraft ephemeris and attitude, and image-quality metrics. It supports algorithm development for RSO detection in dense star fields, multi-object tracking under orbital motion, and attitude estimation from star-tracker-class imagery.
+              </p>
+              <div class="callout">
+                <strong>Core idea:</strong> use a science imager with star-tracker-like characteristics as a dual-use benchmark for space-object detection and attitude-estimation research.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dataset">
+      <div class="container is-max-desktop">
+        <p class="section-kicker has-text-centered">Dataset</p>
+        <h2 class="title is-3 has-text-centered">Dataset Highlights</h2>
+        <div class="columns is-multiline">
+          <div class="column is-4-desktop is-6-tablet"><div class="box has-text-centered metric-card"><p class="title is-4">1,378</p><p class="subtitle is-6">Near-infrared image frames</p></div></div>
+          <div class="column is-4-desktop is-6-tablet"><div class="box has-text-centered metric-card"><p class="title is-4">4,237</p><p class="subtitle is-6">Verified RSO instances</p></div></div>
+          <div class="column is-4-desktop is-6-tablet"><div class="box has-text-centered metric-card"><p class="title is-4">160</p><p class="subtitle is-6">Distinct RSO transits</p></div></div>
+          <div class="column is-4-desktop is-6-tablet"><div class="box has-text-centered metric-card"><p class="title is-4">22</p><p class="subtitle is-6">Observation sessions</p></div></div>
+          <div class="column is-4-desktop is-6-tablet"><div class="box has-text-centered metric-card"><p class="title is-4">35,877</p><p class="subtitle is-6">Detected stellar instances</p></div></div>
+          <div class="column is-4-desktop is-6-tablet"><div class="box has-text-centered metric-card"><p class="title is-4">26° FOV</p><p class="subtitle is-6">FAI near-infrared wide-field imaging</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-light">
+      <div class="container is-max-desktop">
+        <p class="section-kicker has-text-centered">Pipeline</p>
+        <h2 class="title is-3 has-text-centered">Data Generation Pipeline</h2>
+        <div class="figure-card">
+          <figure class="image">
+            <img src="static/images/pipeline.png" alt="DUST data-generation pipeline" loading="lazy">
+          </figure>
+        </div>
+        <p class="has-text-centered" style="margin-top:1rem;color:#555;">
+          The workflow retrieves Level-1 FAI imagery and metadata, performs star detection and astrometric calibration, annotates RSOs through manual and semi-automated workflows, and extracts star/RSO patches for validation.
+        </p>
+      </div>
+    </section>
+
+    <section class="hero is-small">
+      <div class="hero-body">
+        <div class="container">
+          <p class="section-kicker has-text-centered">Visual Overview</p>
+          <h2 class="title is-3 has-text-centered">Figures and Validation Products</h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/coverage.png" alt="Geographic and celestial coverage of DUST" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Observation ground tracks and plate-solved stellar sky coverage across the 22 DUST sessions.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/annotations.png" alt="Annotated RSOs across DUST sessions" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Stacked observations show star trails in white and RSO annotations in yellow across diverse backgrounds and geometries.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/validation.png" alt="DUST technical validation plots" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Validation plots summarize spatial priors, astrometric residuals, bounding-box statistics, feature embeddings, and ROC curves.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/background.png" alt="DUST background stability and illumination artifacts" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Session-level background statistics and polar illumination maps characterize flare, stray light, and Milky Way contamination.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tasks">
+      <div class="container is-max-desktop">
+        <p class="section-kicker has-text-centered">Benchmark</p>
+        <h2 class="title is-3 has-text-centered">Supported Tasks and Technical Validation</h2>
+        <div class="columns is-multiline" style="margin-bottom:2rem;">
+          <div class="column is-6">
+            <div class="box">
+              <h3 class="title is-5">Supported Tasks</h3>
+              <ul>
+                <li>RSO detection in dense stellar fields</li>
+                <li>Multi-object tracking across consecutive frames</li>
+                <li>Star identification and attitude estimation</li>
+                <li>Small-object and low-contrast detection studies</li>
+                <li>Background robustness and domain-shift analysis</li>
+              </ul>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="box">
+              <h3 class="title is-5">Why It Is Challenging</h3>
+              <ul>
+                <li>RSOs are often only a few pixels wide.</li>
+                <li>Stars and RSOs appear nearly point-like in individual frames.</li>
+                <li>Motion is curved because of spacecraft attitude dynamics.</li>
+                <li>Frames include realistic flare, gradients, and stray-light artifacts.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="title is-5">Validation Summary</h3>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <thead><tr><th>Metric</th><th>Reported value</th><th>Interpretation</th></tr></thead>
+            <tbody>
+              <tr><td>Plate-solving success</td><td>84% overall; median 92%</td><td>Most sessions are reliably astrometrically calibrated.</td></tr>
+              <tr><td>Astrometric residuals</td><td>68% within 240.5 arcsec; 95% within 485.4 arcsec</td><td>Sub-pixel accuracy at the FAI scale.</td></tr>
+              <tr><td>Track completeness</td><td>98.4% average</td><td>RSO labels are temporally coherent across frames.</td></tr>
+              <tr><td>Tiny-object regime</td><td>~76.8% of RSOs have width ≤5 px and height ≤5 px</td><td>The benchmark targets extreme small-object detection.</td></tr>
+              <tr><td>Native feature separability</td><td>ROC-AUC 0.753</td><td>Single-frame static features provide only weak separation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-light" id="data-records">
+      <div class="container is-max-desktop">
+        <p class="section-kicker has-text-centered">Files</p>
+        <h2 class="title is-3 has-text-centered">Data Records</h2>
+        <div class="content">
+          <p>
+            The dataset is distributed in open formats including PNG, CSV, TXT, FITS, and HDF5-derived metadata products. Session folders include image frames, star correspondence files, WCS solutions, background statistics, YOLO labels, MOT tracking labels, and thresholded images.
+          </p>
+          <pre><code>DUST/
+├── SET_1/                         # manual annotation sessions
+│   └── YYYY_MM_DD/
+│       ├── Background/
+│       ├── Corr/
+│       ├── H5/
+│       ├── Images/
+│       ├── RSO_Annotations/
+│       │   ├── MOT/
+│       │   └── YOLO/
+│       ├── Thresholded_Images/
+│       └── WCS/
+└── SET_2/                         # semi-automated annotation sessions
+    └── same structure as SET_1</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="citation">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@article{suthakar2026dust,
+  title = {An On-Orbit Star Tracker Benchmark for Resident Space Object Detection and Attitude Estimation},
+  author = {Suthakar, Vithurshan and Kunalakantha, Perushan and Lee, Regina S. K. and Sohn, Gunho},
+  journal = {Scientific Data},
+  year = {2026},
+  doi = {10.1038/s41597-026-07736-9},
+  url = {https://doi.org/10.1038/s41597-026-07736-9}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This project page is adapted from the SpaceSense-Bench academic project page structure and the Nerfies/Academic Project Page template. Replace links, figures, and citation text as needed before final publication.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
